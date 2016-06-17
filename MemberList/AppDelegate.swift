@@ -10,10 +10,15 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControllerDelegate{
 
     var window: UIWindow?
-
+    //var managedObjectContext : NSManagedObjectContext?
+    //managedObjectContext = self//
+    
+    //managedObjectContext = AppDelegate.
+    //(UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

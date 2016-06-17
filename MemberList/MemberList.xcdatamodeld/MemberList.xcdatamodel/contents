@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
+    <entity name="Event" representedClassName=".Event" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="eventHasDates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event_Date" inverseName="event_DateHasEvent" inverseEntity="Event_Date" syncable="YES"/>
+        <relationship name="eventHasMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" inverseName="hasEvents" inverseEntity="Member" syncable="YES"/>
+        <relationship name="eventHasTrainers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trainer" inverseName="trainerHasEvents" inverseEntity="Trainer" syncable="YES"/>
+    </entity>
+    <entity name="Event_Date" representedClassName=".Event_Date" syncable="YES">
+        <attribute name="beginn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="event_DateHasEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="eventHasDates" inverseEntity="Event" syncable="YES"/>
+    </entity>
+    <entity name="Member" representedClassName=".Member" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dlrg" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plz" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="eventHasMembers" inverseEntity="Event" syncable="YES"/>
+    </entity>
+    <entity name="Trainer" representedClassName=".Trainer" syncable="YES">
+        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="licenseID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="trainerHasEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="eventHasTrainers" inverseEntity="Event" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Event" positionX="133" positionY="-147" width="128" height="118"/>
+        <element name="Event_Date" positionX="423" positionY="-63" width="128" height="88"/>
+        <element name="Member" positionX="-146" positionY="-108" width="128" height="180"/>
+        <element name="Trainer" positionX="108" positionY="191" width="128" height="103"/>
+    </elements>
 </model>

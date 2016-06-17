@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0478421CFF455E00BCD6FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0478411CFF455E00BCD6FA /* Constants.swift */; };
 		5C15425E1CFDE6040044F295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15425D1CFDE6040044F295 /* AppDelegate.swift */; };
 		5C1542601CFDE6040044F295 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15425F1CFDE6040044F295 /* ViewController.swift */; };
 		5C1542631CFDE6040044F295 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1542611CFDE6040044F295 /* Main.storyboard */; };
@@ -15,6 +16,35 @@
 		5C15426B1CFDE6040044F295 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1542691CFDE6040044F295 /* LaunchScreen.storyboard */; };
 		5C1542761CFDE6040044F295 /* MemberListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542751CFDE6040044F295 /* MemberListTests.swift */; };
 		5C1542811CFDE6040044F295 /* MemberListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542801CFDE6040044F295 /* MemberListUITests.swift */; };
+		5C15428F1CFDF9420044F295 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15428E1CFDF9420044F295 /* MemberViewController.swift */; };
+		5C1542961CFE13D20044F295 /* Member+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542941CFE13D20044F295 /* Member+CoreDataProperties.swift */; };
+		5C1542971CFE13D20044F295 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542951CFE13D20044F295 /* Member.swift */; };
+		5C1542991CFE1B200044F295 /* MemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542981CFE1B200044F295 /* MemberTableViewController.swift */; };
+		5C179D0D1D00C5DD0041B306 /* EventDateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C179D0C1D00C5DD0041B306 /* EventDateController.swift */; };
+		5C3A67211D104BE300E4C599 /* TDTextfieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A67201D104BE300E4C599 /* TDTextfieldCell.swift */; };
+		5C3A67231D104C7B00E4C599 /* TDEventTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A67221D104C7B00E4C599 /* TDEventTabCell.swift */; };
+		5C45A4251CFEEFDF003D4922 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45A4241CFEEFDF003D4922 /* MemberTableViewCell.swift */; };
+		5C50CFF81D147F710056937B /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50CFF71D147F710056937B /* EventDetailViewController.swift */; };
+		5C57F64C1D09F49100847D67 /* TrainerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57F64B1D09F49100847D67 /* TrainerDetailController.swift */; };
+		5C57F64F1D09F51100847D67 /* TrainerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57F64E1D09F51100847D67 /* TrainerTableViewController.swift */; };
+		5C57F6511D0A001600847D67 /* TrainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57F6501D0A001600847D67 /* TrainerTableViewCell.swift */; };
+		5C617D031D03225B00493B29 /* EventGeneralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C617D021D03225B00493B29 /* EventGeneralController.swift */; };
+		5C70D52B1D0853B300D11E5B /* MDTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D52A1D0853B300D11E5B /* MDTextViewCell.swift */; };
+		5C70D52D1D0855B500D11E5B /* MDTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D52C1D0855B500D11E5B /* MDTableCell.swift */; };
+		5C70D52F1D085A0A00D11E5B /* CSVImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D52E1D085A0A00D11E5B /* CSVImporter.swift */; };
+		5C70D5371D08630E00D11E5B /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5311D08630E00D11E5B /* Event+CoreDataProperties.swift */; };
+		5C70D5381D08630E00D11E5B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5321D08630E00D11E5B /* Event.swift */; };
+		5C70D5391D08630E00D11E5B /* Trainer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5331D08630E00D11E5B /* Trainer+CoreDataProperties.swift */; };
+		5C70D53A1D08630E00D11E5B /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5341D08630E00D11E5B /* Trainer.swift */; };
+		5C70D53B1D08630E00D11E5B /* Event_Date+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5351D08630E00D11E5B /* Event_Date+CoreDataProperties.swift */; };
+		5C70D53C1D08630E00D11E5B /* Event_Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5361D08630E00D11E5B /* Event_Date.swift */; };
+		5CB7B4D91D133AA100CA9390 /* EventContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB7B4D81D133AA100CA9390 /* EventContainerController.swift */; };
+		5CDABA111D05FE9C002115DA /* MemberDetailTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA101D05FE9C002115DA /* MemberDetailTabViewController.swift */; };
+		5CDABA161D0600F4002115DA /* MDTextfieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA151D0600F4002115DA /* MDTextfieldCell.swift */; };
+		5CDABA1A1D0605D2002115DA /* MDSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA191D0605D2002115DA /* MDSwitchCell.swift */; };
+		5CDABA1C1D0605ED002115DA /* MDPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA1B1D0605ED002115DA /* MDPhotoCell.swift */; };
+		5CF28E401D12F078002CB997 /* EventTableHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF28E3F1D12F078002CB997 /* EventTableHeaderController.swift */; };
+		5CF28E421D12F9A2002CB997 /* EventTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF28E411D12F9A2002CB997 /* EventTableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C0478411CFF455E00BCD6FA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5C15425A1CFDE6030044F295 /* MemberList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemberList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C15425D1CFDE6040044F295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C15425F1CFDE6040044F295 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +80,35 @@
 		5C15427C1CFDE6040044F295 /* MemberListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemberListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C1542801CFDE6040044F295 /* MemberListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListUITests.swift; sourceTree = "<group>"; };
 		5C1542821CFDE6040044F295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C15428E1CFDF9420044F295 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		5C1542941CFE13D20044F295 /* Member+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C1542951CFE13D20044F295 /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		5C1542981CFE1B200044F295 /* MemberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewController.swift; sourceTree = "<group>"; };
+		5C179D0C1D00C5DD0041B306 /* EventDateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDateController.swift; sourceTree = "<group>"; };
+		5C3A67201D104BE300E4C599 /* TDTextfieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDTextfieldCell.swift; sourceTree = "<group>"; };
+		5C3A67221D104C7B00E4C599 /* TDEventTabCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDEventTabCell.swift; sourceTree = "<group>"; };
+		5C45A4241CFEEFDF003D4922 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		5C50CFF71D147F710056937B /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		5C57F64B1D09F49100847D67 /* TrainerDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDetailController.swift; sourceTree = "<group>"; };
+		5C57F64E1D09F51100847D67 /* TrainerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTableViewController.swift; sourceTree = "<group>"; };
+		5C57F6501D0A001600847D67 /* TrainerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTableViewCell.swift; sourceTree = "<group>"; };
+		5C617D021D03225B00493B29 /* EventGeneralController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventGeneralController.swift; sourceTree = "<group>"; };
+		5C70D52A1D0853B300D11E5B /* MDTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDTextViewCell.swift; sourceTree = "<group>"; };
+		5C70D52C1D0855B500D11E5B /* MDTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDTableCell.swift; sourceTree = "<group>"; };
+		5C70D52E1D085A0A00D11E5B /* CSVImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVImporter.swift; sourceTree = "<group>"; };
+		5C70D5311D08630E00D11E5B /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C70D5321D08630E00D11E5B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		5C70D5331D08630E00D11E5B /* Trainer+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trainer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C70D5341D08630E00D11E5B /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
+		5C70D5351D08630E00D11E5B /* Event_Date+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event_Date+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C70D5361D08630E00D11E5B /* Event_Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event_Date.swift; sourceTree = "<group>"; };
+		5CB7B4D81D133AA100CA9390 /* EventContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventContainerController.swift; sourceTree = "<group>"; };
+		5CDABA101D05FE9C002115DA /* MemberDetailTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberDetailTabViewController.swift; sourceTree = "<group>"; };
+		5CDABA151D0600F4002115DA /* MDTextfieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDTextfieldCell.swift; sourceTree = "<group>"; };
+		5CDABA191D0605D2002115DA /* MDSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDSwitchCell.swift; sourceTree = "<group>"; };
+		5CDABA1B1D0605ED002115DA /* MDPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPhotoCell.swift; sourceTree = "<group>"; };
+		5CF28E3F1D12F078002CB997 /* EventTableHeaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableHeaderController.swift; sourceTree = "<group>"; };
+		5CF28E411D12F9A2002CB997 /* EventTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +159,11 @@
 		5C15425C1CFDE6040044F295 /* MemberList */ = {
 			isa = PBXGroup;
 			children = (
+				5C57F64D1D09F49C00847D67 /* Trainer */,
+				5C70D53D1D08631F00D11E5B /* Data */,
+				5C70D5301D085BF100D11E5B /* CSV */,
+				5C617D011D03208300493B29 /* Event */,
+				5C617CFF1D03207400493B29 /* Member */,
 				5C15425D1CFDE6040044F295 /* AppDelegate.swift */,
 				5C15425F1CFDE6040044F295 /* ViewController.swift */,
 				5C1542611CFDE6040044F295 /* Main.storyboard */,
@@ -106,6 +171,7 @@
 				5C1542691CFDE6040044F295 /* LaunchScreen.storyboard */,
 				5C15426C1CFDE6040044F295 /* Info.plist */,
 				5C1542641CFDE6040044F295 /* MemberList.xcdatamodeld */,
+				5C0478411CFF455E00BCD6FA /* Constants.swift */,
 			);
 			path = MemberList;
 			sourceTree = "<group>";
@@ -126,6 +192,78 @@
 				5C1542821CFDE6040044F295 /* Info.plist */,
 			);
 			path = MemberListUITests;
+			sourceTree = "<group>";
+		};
+		5C57F64D1D09F49C00847D67 /* Trainer */ = {
+			isa = PBXGroup;
+			children = (
+				5C57F64B1D09F49100847D67 /* TrainerDetailController.swift */,
+				5C57F64E1D09F51100847D67 /* TrainerTableViewController.swift */,
+				5C57F6501D0A001600847D67 /* TrainerTableViewCell.swift */,
+				5C3A67201D104BE300E4C599 /* TDTextfieldCell.swift */,
+				5C3A67221D104C7B00E4C599 /* TDEventTabCell.swift */,
+			);
+			name = Trainer;
+			sourceTree = "<group>";
+		};
+		5C617CFF1D03207400493B29 /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				5CDABA121D05FED5002115DA /* MemberDetail */,
+				5C15428E1CFDF9420044F295 /* MemberViewController.swift */,
+				5C1542981CFE1B200044F295 /* MemberTableViewController.swift */,
+				5C45A4241CFEEFDF003D4922 /* MemberTableViewCell.swift */,
+			);
+			name = Member;
+			sourceTree = "<group>";
+		};
+		5C617D011D03208300493B29 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				5C179D0C1D00C5DD0041B306 /* EventDateController.swift */,
+				5CF28E3F1D12F078002CB997 /* EventTableHeaderController.swift */,
+				5C617D021D03225B00493B29 /* EventGeneralController.swift */,
+				5CF28E411D12F9A2002CB997 /* EventTableController.swift */,
+				5CB7B4D81D133AA100CA9390 /* EventContainerController.swift */,
+				5C50CFF71D147F710056937B /* EventDetailViewController.swift */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		5C70D5301D085BF100D11E5B /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+				5C70D52E1D085A0A00D11E5B /* CSVImporter.swift */,
+			);
+			name = CSV;
+			sourceTree = "<group>";
+		};
+		5C70D53D1D08631F00D11E5B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5C1542941CFE13D20044F295 /* Member+CoreDataProperties.swift */,
+				5C70D5311D08630E00D11E5B /* Event+CoreDataProperties.swift */,
+				5C70D5321D08630E00D11E5B /* Event.swift */,
+				5C70D5331D08630E00D11E5B /* Trainer+CoreDataProperties.swift */,
+				5C70D5341D08630E00D11E5B /* Trainer.swift */,
+				5C70D5351D08630E00D11E5B /* Event_Date+CoreDataProperties.swift */,
+				5C70D5361D08630E00D11E5B /* Event_Date.swift */,
+				5C1542951CFE13D20044F295 /* Member.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		5CDABA121D05FED5002115DA /* MemberDetail */ = {
+			isa = PBXGroup;
+			children = (
+				5CDABA101D05FE9C002115DA /* MemberDetailTabViewController.swift */,
+				5CDABA151D0600F4002115DA /* MDTextfieldCell.swift */,
+				5CDABA191D0605D2002115DA /* MDSwitchCell.swift */,
+				5CDABA1B1D0605ED002115DA /* MDPhotoCell.swift */,
+				5C70D52A1D0853B300D11E5B /* MDTextViewCell.swift */,
+				5C70D52C1D0855B500D11E5B /* MDTableCell.swift */,
+			);
+			name = MemberDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +334,7 @@
 				TargetAttributes = {
 					5C1542591CFDE6030044F295 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 28A6QAU4BJ;
 					};
 					5C1542701CFDE6040044F295 = {
 						CreatedOnToolsVersion = 7.3;
@@ -259,9 +398,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C70D53B1D08630E00D11E5B /* Event_Date+CoreDataProperties.swift in Sources */,
+				5C15428F1CFDF9420044F295 /* MemberViewController.swift in Sources */,
+				5CB7B4D91D133AA100CA9390 /* EventContainerController.swift in Sources */,
+				5CDABA1A1D0605D2002115DA /* MDSwitchCell.swift in Sources */,
+				5C57F64C1D09F49100847D67 /* TrainerDetailController.swift in Sources */,
+				5C70D53A1D08630E00D11E5B /* Trainer.swift in Sources */,
+				5C70D53C1D08630E00D11E5B /* Event_Date.swift in Sources */,
+				5C179D0D1D00C5DD0041B306 /* EventDateController.swift in Sources */,
+				5C70D52B1D0853B300D11E5B /* MDTextViewCell.swift in Sources */,
+				5C50CFF81D147F710056937B /* EventDetailViewController.swift in Sources */,
+				5C1542971CFE13D20044F295 /* Member.swift in Sources */,
+				5C70D5391D08630E00D11E5B /* Trainer+CoreDataProperties.swift in Sources */,
 				5C1542601CFDE6040044F295 /* ViewController.swift in Sources */,
+				5C1542991CFE1B200044F295 /* MemberTableViewController.swift in Sources */,
+				5CDABA1C1D0605ED002115DA /* MDPhotoCell.swift in Sources */,
+				5C70D52D1D0855B500D11E5B /* MDTableCell.swift in Sources */,
+				5C57F64F1D09F51100847D67 /* TrainerTableViewController.swift in Sources */,
+				5C70D5371D08630E00D11E5B /* Event+CoreDataProperties.swift in Sources */,
 				5C15425E1CFDE6040044F295 /* AppDelegate.swift in Sources */,
+				5C3A67231D104C7B00E4C599 /* TDEventTabCell.swift in Sources */,
 				5C1542661CFDE6040044F295 /* MemberList.xcdatamodeld in Sources */,
+				5CF28E401D12F078002CB997 /* EventTableHeaderController.swift in Sources */,
+				5C3A67211D104BE300E4C599 /* TDTextfieldCell.swift in Sources */,
+				5CDABA161D0600F4002115DA /* MDTextfieldCell.swift in Sources */,
+				5C1542961CFE13D20044F295 /* Member+CoreDataProperties.swift in Sources */,
+				5CDABA111D05FE9C002115DA /* MemberDetailTabViewController.swift in Sources */,
+				5C45A4251CFEEFDF003D4922 /* MemberTableViewCell.swift in Sources */,
+				5CF28E421D12F9A2002CB997 /* EventTableController.swift in Sources */,
+				5C70D52F1D085A0A00D11E5B /* CSVImporter.swift in Sources */,
+				5C0478421CFF455E00BCD6FA /* Constants.swift in Sources */,
+				5C57F6511D0A001600847D67 /* TrainerTableViewCell.swift in Sources */,
+				5C70D5381D08630E00D11E5B /* Event.swift in Sources */,
+				5C617D031D03225B00493B29 /* EventGeneralController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,10 +574,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MemberList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = spp.MemberList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -416,10 +588,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MemberList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = spp.MemberList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -488,6 +663,7 @@
 				5C1542871CFDE6040044F295 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5C1542881CFDE6040044F295 /* Build configuration list for PBXNativeTarget "MemberListTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +672,7 @@
 				5C15428A1CFDE6040044F295 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5C15428B1CFDE6040044F295 /* Build configuration list for PBXNativeTarget "MemberListUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +681,7 @@
 				5C15428D1CFDE6040044F295 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
