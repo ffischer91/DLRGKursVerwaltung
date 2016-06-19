@@ -3,14 +3,14 @@
     <entity name="Event" representedClassName=".Event" syncable="YES">
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="eventHasDates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event_Date" inverseName="event_DateHasEvent" inverseEntity="Event_Date" syncable="YES"/>
+        <relationship name="eventHasDates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event_Date" inverseName="hasEvent" inverseEntity="Event_Date" syncable="YES"/>
         <relationship name="eventHasMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" inverseName="hasEvents" inverseEntity="Member" syncable="YES"/>
-        <relationship name="eventHasTrainers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trainer" inverseName="trainerHasEvents" inverseEntity="Trainer" syncable="YES"/>
     </entity>
     <entity name="Event_Date" representedClassName=".Event_Date" syncable="YES">
         <attribute name="beginn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="event_DateHasEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="eventHasDates" inverseEntity="Event" syncable="YES"/>
+        <relationship name="hasEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="eventHasDates" inverseEntity="Event" syncable="YES"/>
+        <relationship name="hasTrainer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trainer" inverseName="hasEvent_Date" inverseEntity="Trainer" syncable="YES"/>
     </entity>
     <entity name="Member" representedClassName=".Member" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -27,12 +27,12 @@
         <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="licenseID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="trainerHasEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="eventHasTrainers" inverseEntity="Event" syncable="YES"/>
+        <relationship name="hasEvent_Date" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event_Date" inverseName="hasTrainer" inverseEntity="Event_Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="133" positionY="-147" width="128" height="118"/>
-        <element name="Event_Date" positionX="423" positionY="-63" width="128" height="88"/>
+        <element name="Event" positionX="133" positionY="-147" width="128" height="103"/>
+        <element name="Event_Date" positionX="322" positionY="-81" width="128" height="28"/>
         <element name="Member" positionX="-146" positionY="-108" width="128" height="180"/>
-        <element name="Trainer" positionX="108" positionY="191" width="128" height="103"/>
+        <element name="Trainer" positionX="169" positionY="144" width="128" height="103"/>
     </elements>
 </model>

@@ -38,7 +38,7 @@
 		5C70D53A1D08630E00D11E5B /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5341D08630E00D11E5B /* Trainer.swift */; };
 		5C70D53B1D08630E00D11E5B /* Event_Date+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5351D08630E00D11E5B /* Event_Date+CoreDataProperties.swift */; };
 		5C70D53C1D08630E00D11E5B /* Event_Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5361D08630E00D11E5B /* Event_Date.swift */; };
-		5CB7B4D91D133AA100CA9390 /* EventContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB7B4D81D133AA100CA9390 /* EventContainerController.swift */; };
+		5CBB50371D15D0F200969F02 /* EDTrainerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBB50361D15D0F200969F02 /* EDTrainerTableCell.swift */; };
 		5CDABA111D05FE9C002115DA /* MemberDetailTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA101D05FE9C002115DA /* MemberDetailTabViewController.swift */; };
 		5CDABA161D0600F4002115DA /* MDTextfieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA151D0600F4002115DA /* MDTextfieldCell.swift */; };
 		5CDABA1A1D0605D2002115DA /* MDSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA191D0605D2002115DA /* MDSwitchCell.swift */; };
@@ -102,7 +102,7 @@
 		5C70D5341D08630E00D11E5B /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		5C70D5351D08630E00D11E5B /* Event_Date+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event_Date+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5C70D5361D08630E00D11E5B /* Event_Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event_Date.swift; sourceTree = "<group>"; };
-		5CB7B4D81D133AA100CA9390 /* EventContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventContainerController.swift; sourceTree = "<group>"; };
+		5CBB50361D15D0F200969F02 /* EDTrainerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EDTrainerTableCell.swift; sourceTree = "<group>"; };
 		5CDABA101D05FE9C002115DA /* MemberDetailTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberDetailTabViewController.swift; sourceTree = "<group>"; };
 		5CDABA151D0600F4002115DA /* MDTextfieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDTextfieldCell.swift; sourceTree = "<group>"; };
 		5CDABA191D0605D2002115DA /* MDSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDSwitchCell.swift; sourceTree = "<group>"; };
@@ -170,7 +170,6 @@
 				5C1542671CFDE6040044F295 /* Assets.xcassets */,
 				5C1542691CFDE6040044F295 /* LaunchScreen.storyboard */,
 				5C15426C1CFDE6040044F295 /* Info.plist */,
-				5C1542641CFDE6040044F295 /* MemberList.xcdatamodeld */,
 				5C0478411CFF455E00BCD6FA /* Constants.swift */,
 			);
 			path = MemberList;
@@ -224,8 +223,8 @@
 				5CF28E3F1D12F078002CB997 /* EventTableHeaderController.swift */,
 				5C617D021D03225B00493B29 /* EventGeneralController.swift */,
 				5CF28E411D12F9A2002CB997 /* EventTableController.swift */,
-				5CB7B4D81D133AA100CA9390 /* EventContainerController.swift */,
 				5C50CFF71D147F710056937B /* EventDetailViewController.swift */,
+				5CBB50361D15D0F200969F02 /* EDTrainerTableCell.swift */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -241,6 +240,7 @@
 		5C70D53D1D08631F00D11E5B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5C1542641CFDE6040044F295 /* MemberList.xcdatamodeld */,
 				5C1542941CFE13D20044F295 /* Member+CoreDataProperties.swift */,
 				5C70D5311D08630E00D11E5B /* Event+CoreDataProperties.swift */,
 				5C70D5321D08630E00D11E5B /* Event.swift */,
@@ -400,7 +400,6 @@
 			files = (
 				5C70D53B1D08630E00D11E5B /* Event_Date+CoreDataProperties.swift in Sources */,
 				5C15428F1CFDF9420044F295 /* MemberViewController.swift in Sources */,
-				5CB7B4D91D133AA100CA9390 /* EventContainerController.swift in Sources */,
 				5CDABA1A1D0605D2002115DA /* MDSwitchCell.swift in Sources */,
 				5C57F64C1D09F49100847D67 /* TrainerDetailController.swift in Sources */,
 				5C70D53A1D08630E00D11E5B /* Trainer.swift in Sources */,
@@ -420,6 +419,7 @@
 				5C3A67231D104C7B00E4C599 /* TDEventTabCell.swift in Sources */,
 				5C1542661CFDE6040044F295 /* MemberList.xcdatamodeld in Sources */,
 				5CF28E401D12F078002CB997 /* EventTableHeaderController.swift in Sources */,
+				5CBB50371D15D0F200969F02 /* EDTrainerTableCell.swift in Sources */,
 				5C3A67211D104BE300E4C599 /* TDTextfieldCell.swift in Sources */,
 				5CDABA161D0600F4002115DA /* MDTextfieldCell.swift in Sources */,
 				5C1542961CFE13D20044F295 /* Member+CoreDataProperties.swift in Sources */,

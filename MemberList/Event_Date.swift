@@ -12,6 +12,20 @@ import CoreData
 
 class Event_Date: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    convenience init(event: Event, begin: NSDate, end: NSDate, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+        
+        let entity = NSEntityDescription.entityForName("Event_Date", inManagedObjectContext: context)!
+        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.hasEvent = event
+        self.beginn = begin
+        self.end = end
+    }
+}
 
+extension NSDate{
+    func date_toString() -> String{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+        return dateFormatter.stringFromDate(self)
+    }
 }

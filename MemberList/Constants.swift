@@ -12,6 +12,8 @@ public struct Constants {
     static let CellReuseIdentifier = "Member Table Cell"
     static let CellEventHeaders = "Event Cell Header"
     static let CellEventTable   = "Event Table Cell"
+    static let CellEDTrainer = "Cell ED Trainer"
+    static let CellEDDate = "Cell ED Date"
     
     static let CellMemberDetailTextField = "MDTextfieldCell"
     static let CellMemberDetailPhoto = "MDPhotoCell"
@@ -24,6 +26,7 @@ public struct Constants {
     static let ShowNewMemberSegue = "Show New Member"
     
     static let ShowDetailEvent = "Show Detail Event"
+    static let ShowNewEvent = "Show New Event"
     static let ShowEventHeader = "Show Event Header"
     
     static let Cell_Allgemein = 0
@@ -32,6 +35,8 @@ public struct Constants {
     static let ShowDetailEventTermin = "Show Detail Event Termin"
     static let Cell_Teilnehmer = 2
     static let Cell_Helfer = 3
+    
+    
     
     static let EntityMember = "Member"
     static let EntityTrainer = "Trainer"

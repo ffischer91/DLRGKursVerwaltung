@@ -14,7 +14,8 @@ class EventTableController: UITableViewController, NSFetchedResultsControllerDel
         let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
         
-        
+        var edvController: EventDetailViewController? = nil
+    
         var selectedEvent: Event?
         var selectedNSManagedObject :NSManagedObject?
         
@@ -39,42 +40,34 @@ class EventTableController: UITableViewController, NSFetchedResultsControllerDel
             } catch let error as NSError {
                 print("Could not fetch Event \(error), \(error.userInfo)")
             }
-            // Uncomment the following line to preserve selection between presentations
-            //self.clearsSelectionOnViewWillAppear = false
-            
-            // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-            // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+//            if let split = self.splitViewController {
+//                let controllers = split.viewControllers
+//                self.edvController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? EventDetailViewController
+//            }
         }
-        
+    
+    override func viewWillAppear(animated: Bool) {
+        self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+        super.viewWillAppear(animated)
+    }
+    
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
             // Dispose of any resources that can be recreated.
         }
         
-        // MARK: - Table view data source
-        
-        
-        
+    // MARK: - Table view
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
             
-//            if segue.identifier == Constants.ShowNewEventSegue{
-//                if let eventVC = segue.destinationViewController as? EventDetailController{
-//                    eventVC.event = nil
-//                }
-//            }
-//            else if segue.identifier == Constants.ShowDetailEventSegue{
-//                let indexPath = tableView.indexPathForSelectedRow!
-//                let selectedEvent = fetchedResultController.objectAtIndexPath(indexPath) as! Event
-//                if let eventVC = segue.destinationViewController as? EventDetailController{
-//                    eventVC.event = selectedEvent
-//                }
-//            }
-            if segue.identifier == Constants.ShowEventHeader{
+            if segue.identifier == Constants.ShowNewEvent{
+                let eventVC = (segue.destinationViewController as! UINavigationController).topViewController as! EventDetailViewController
+                eventVC.event = nil
+            }
+            else if segue.identifier == Constants.ShowDetailEvent{
                 let indexPath = tableView.indexPathForSelectedRow!
                 let selectedEvent = fetchedResultController.objectAtIndexPath(indexPath) as! Event
-                if let eventVC = segue.destinationViewController as? EventTableHeaderController{
-                      eventVC.event = selectedEvent
-                }
+                let eventVC = (segue.destinationViewController as! UINavigationController).topViewController as! EventDetailViewController
+                eventVC.event = selectedEvent
             }
         }
         
@@ -131,7 +124,7 @@ class EventTableController: UITableViewController, NSFetchedResultsControllerDel
             }
             
         }
-        
+    
         func controllerDidChangeContent(controller: NSFetchedResultsController) {
             tableView.reloadData()
         }

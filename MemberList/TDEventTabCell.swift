@@ -21,4 +21,9 @@ class TDEventTabCell: UITableViewCell, Reusable {
         // Configure the view for the selected state
     }
 
+   
+    @IBOutlet weak var label_EventName: UILabel!
+    
+    @IBOutlet weak var label_EventBeginn: UILabel!
+   
 }
