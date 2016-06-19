@@ -14,6 +14,9 @@ public struct Constants {
     static let CellEventTable   = "Event Table Cell"
     static let CellEDTrainer = "Cell ED Trainer"
     static let CellEDDate = "Cell ED Date"
+    static let CellEDMember = "Cell ED Member"
+    static let CellEDMemberPopup = "Cell ED Member Popup"
+    
     
     static let CellMemberDetailTextField = "MDTextfieldCell"
     static let CellMemberDetailPhoto = "MDPhotoCell"

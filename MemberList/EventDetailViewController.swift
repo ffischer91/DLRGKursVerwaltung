@@ -19,6 +19,8 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     
     var trainer: Trainer?
     var eventDatePicker: Event_Date?
+    var eventDatePickerMember: Event_Date?
+    
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var fetchedRSC_Trainer: NSFetchedResultsController = NSFetchedResultsController()
@@ -108,6 +110,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     @IBOutlet weak var dP_end: UIDatePicker!
     
     
+    //MARK: Button Add Datum
     @IBAction func btn_addDate(sender: AnyObject) {
         var date = dP_begin.date
         //let dateFormatter = NSDateFormatter()
@@ -128,6 +131,11 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         tableView.reloadData()
         
     }
+    //MARK: Button Add Teilnehmer
+    
+    @IBOutlet weak var btn_addMember: UIButton!
+    
+    
     
     //MARK: Textfield
     func textFieldDidEndEditing(textField: UITextField) {
@@ -138,17 +146,17 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         return true
     }
     
-    func datePickerValueChanged(sender:UIDatePicker) {
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-        
-       // dateTextField.text = dateFormatter.stringFromDate(sender.date)
-    }
+//    func datePickerValueChanged(sender:UIDatePicker) {
+//        
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+//        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+//        
+//       // dateTextField.text = dateFormatter.stringFromDate(sender.date)
+//    }
     
+    // MARK: Date Picker Ausbilder
     @IBOutlet weak var label_AusbilderDate: UILabel!
-    
     @IBOutlet weak var stepper_Ausbilder: UIStepper!
     
     @IBAction func stepper_Ausbilder_Changed(sender: UIStepper) {
@@ -160,6 +168,17 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     
+    // MARK: Date Picker Teilnehmer
+    @IBOutlet weak var label_TeilnehmerDate: UILabel!
+    @IBOutlet weak var stepper_Teilnehmer: UIStepper!
+    
+    @IBAction func stepper_Teilnehmer_Changed(sender: UIStepper) {
+        if(eventDates.count > 1){
+            eventDatePickerMember = eventDates[Int(stepper_Teilnehmer.value)]
+            label_TeilnehmerDate.text = dateFormatter.stringFromDate(eventDatePickerMember!.beginn!)
+            memberTableView.reloadData()
+        }
+    }
     
     func setDataToView(){
         tF_name.text = event!.name
@@ -169,13 +188,25 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         stepper_Ausbilder.minimumValue = 0.0
         stepper_Ausbilder.maximumValue = Double(eventDates.count - 1)
         stepper_Ausbilder.stepValue = 1.0
+        // stepper Tab Teilnehmer
+        stepper_Teilnehmer.minimumValue = 0.0
+        stepper_Teilnehmer.maximumValue = Double(eventDates.count - 1)
+        stepper_Teilnehmer.stepValue = 1.0
+        
         
         if(eventDates.count > 0){
+            // Tab Member
+            label_TeilnehmerDate.text = dateFormatter.stringFromDate(eventDates[0].beginn!)
+            let eDM = eventDates[ 0 ]
+            eventDatePickerMember = eDM
+            // Tab Ausbilder
             label_AusbilderDate.text = dateFormatter.stringFromDate(eventDates[0].beginn!)
-            let eD = eventDates[ 0 ]
-            eventDatePicker = eD
+            let eDA = eventDates[ 0 ]
+            eventDatePicker = eDA
         }else{
             label_AusbilderDate.text = ""
+            label_TeilnehmerDate.text = ""
+            
         }
     }
     
@@ -201,7 +232,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             if (event == nil){
                 return 0
             }else{
-                print("EventHasDates.Count: \(event!.eventHasDates!.count)")
+               // print("EventHasDates.Count: \(event!.eventHasDates!.count)")
                 return event!.eventHasDates!.count
             }
          }else if( tableView == self.trainerTableView){
@@ -301,6 +332,9 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         fetchedRSC_Trainer = NSFetchedResultsController(fetchRequest: trainerFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedRSC_Trainer
     }
+    //MARK: Member Table
+    
+    @IBOutlet weak var memberTableView: UITableView!
     
     
     

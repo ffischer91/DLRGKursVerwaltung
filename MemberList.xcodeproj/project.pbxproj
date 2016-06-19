@@ -38,6 +38,9 @@
 		5C70D53A1D08630E00D11E5B /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5341D08630E00D11E5B /* Trainer.swift */; };
 		5C70D53B1D08630E00D11E5B /* Event_Date+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5351D08630E00D11E5B /* Event_Date+CoreDataProperties.swift */; };
 		5C70D53C1D08630E00D11E5B /* Event_Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70D5361D08630E00D11E5B /* Event_Date.swift */; };
+		5CA769DE1D16CEE700F17CA8 /* EDMemberTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA769DD1D16CEE700F17CA8 /* EDMemberTableCell.swift */; };
+		5CA769E01D16D73300F17CA8 /* EDMemberPopupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA769DF1D16D73300F17CA8 /* EDMemberPopupCell.swift */; };
+		5CA769E21D16D8D800F17CA8 /* EDMemberPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA769E11D16D8D800F17CA8 /* EDMemberPopoverController.swift */; };
 		5CBB50371D15D0F200969F02 /* EDTrainerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBB50361D15D0F200969F02 /* EDTrainerTableCell.swift */; };
 		5CDABA111D05FE9C002115DA /* MemberDetailTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA101D05FE9C002115DA /* MemberDetailTabViewController.swift */; };
 		5CDABA161D0600F4002115DA /* MDTextfieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA151D0600F4002115DA /* MDTextfieldCell.swift */; };
@@ -102,6 +105,9 @@
 		5C70D5341D08630E00D11E5B /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		5C70D5351D08630E00D11E5B /* Event_Date+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event_Date+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5C70D5361D08630E00D11E5B /* Event_Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event_Date.swift; sourceTree = "<group>"; };
+		5CA769DD1D16CEE700F17CA8 /* EDMemberTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EDMemberTableCell.swift; sourceTree = "<group>"; };
+		5CA769DF1D16D73300F17CA8 /* EDMemberPopupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EDMemberPopupCell.swift; sourceTree = "<group>"; };
+		5CA769E11D16D8D800F17CA8 /* EDMemberPopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EDMemberPopoverController.swift; sourceTree = "<group>"; };
 		5CBB50361D15D0F200969F02 /* EDTrainerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EDTrainerTableCell.swift; sourceTree = "<group>"; };
 		5CDABA101D05FE9C002115DA /* MemberDetailTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberDetailTabViewController.swift; sourceTree = "<group>"; };
 		5CDABA151D0600F4002115DA /* MDTextfieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDTextfieldCell.swift; sourceTree = "<group>"; };
@@ -225,6 +231,9 @@
 				5CF28E411D12F9A2002CB997 /* EventTableController.swift */,
 				5C50CFF71D147F710056937B /* EventDetailViewController.swift */,
 				5CBB50361D15D0F200969F02 /* EDTrainerTableCell.swift */,
+				5CA769DD1D16CEE700F17CA8 /* EDMemberTableCell.swift */,
+				5CA769DF1D16D73300F17CA8 /* EDMemberPopupCell.swift */,
+				5CA769E11D16D8D800F17CA8 /* EDMemberPopoverController.swift */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -400,15 +409,18 @@
 			files = (
 				5C70D53B1D08630E00D11E5B /* Event_Date+CoreDataProperties.swift in Sources */,
 				5C15428F1CFDF9420044F295 /* MemberViewController.swift in Sources */,
+				5CA769E21D16D8D800F17CA8 /* EDMemberPopoverController.swift in Sources */,
 				5CDABA1A1D0605D2002115DA /* MDSwitchCell.swift in Sources */,
 				5C57F64C1D09F49100847D67 /* TrainerDetailController.swift in Sources */,
 				5C70D53A1D08630E00D11E5B /* Trainer.swift in Sources */,
 				5C70D53C1D08630E00D11E5B /* Event_Date.swift in Sources */,
+				5CA769E01D16D73300F17CA8 /* EDMemberPopupCell.swift in Sources */,
 				5C179D0D1D00C5DD0041B306 /* EventDateController.swift in Sources */,
 				5C70D52B1D0853B300D11E5B /* MDTextViewCell.swift in Sources */,
 				5C50CFF81D147F710056937B /* EventDetailViewController.swift in Sources */,
 				5C1542971CFE13D20044F295 /* Member.swift in Sources */,
 				5C70D5391D08630E00D11E5B /* Trainer+CoreDataProperties.swift in Sources */,
+				5CA769DE1D16CEE700F17CA8 /* EDMemberTableCell.swift in Sources */,
 				5C1542601CFDE6040044F295 /* ViewController.swift in Sources */,
 				5C1542991CFE1B200044F295 /* MemberTableViewController.swift in Sources */,
 				5CDABA1C1D0605ED002115DA /* MDPhotoCell.swift in Sources */,
