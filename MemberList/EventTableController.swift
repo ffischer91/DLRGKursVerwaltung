@@ -30,7 +30,6 @@ class EventTableController: UITableViewController, NSFetchedResultsControllerDel
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            
             title = "Veranstaltungen"
             
             fetchedResultController = getFetchedResultController()
@@ -40,10 +39,6 @@ class EventTableController: UITableViewController, NSFetchedResultsControllerDel
             } catch let error as NSError {
                 print("Could not fetch Event \(error), \(error.userInfo)")
             }
-//            if let split = self.splitViewController {
-//                let controllers = split.viewControllers
-//                self.edvController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? EventDetailViewController
-//            }
         }
     
     override func viewWillAppear(animated: Bool) {

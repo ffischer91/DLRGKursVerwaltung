@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CellSwichChangedProtocol{
+class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CellSwichChangedProtocol, UIPopoverPresentationControllerDelegate{
 
     var event: Event?
     var selectedEvent_Date: Event_Date?
@@ -24,6 +24,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var fetchedRSC_Trainer: NSFetchedResultsController = NSFetchedResultsController()
+    var fetchedRSC_Member: NSFetchedResultsController = NSFetchedResultsController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +37,13 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         self.viewTeilnehmer.hidden = true
         
         dP_begin.date = NSDate() //current date
-        dP_end.date = NSDate() //current date
+        dP_end.date = NSDate()  //current date
         
+        // Date Table View
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        //
+        
+        // Trainer Table View
         self.trainerTableView.delegate = self
         self.trainerTableView.dataSource = self
         fetchedRSC_Trainer = getFetchedRSC_Trainer()
@@ -50,14 +53,18 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         } catch let error as NSError {
             print("Could not fetch Trainer \(error), \(error.userInfo)")
         }
+        // Member Table View
+        self.memberTableView.delegate = self
+        self.memberTableView.dataSource = self
+        self.memberTableView.allowsSelection = false
+        self.memberTableView.reloadData()
         
-        
+        // Datumsformat
         dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
 
+        // Daten setzen
         if(event != nil){
             setDataToView()
-    //        eventDates_Set = event!.eventHasDates
-    //        eventDates = eventDates_Set?.allObjects as! [Event_Date]
         }
         
         
@@ -74,6 +81,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     @IBOutlet weak var viewTeilnehmer: UIView!
     
 
+    // Jeweiligen View einblenden
     @IBAction func segmentChange(sender: AnyObject)
     {
         switch sender.selectedSegmentIndex {
@@ -112,29 +120,26 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     
     //MARK: Button Add Datum
     @IBAction func btn_addDate(sender: AnyObject) {
-        var date = dP_begin.date
-        //let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
-
-        let beginString = dateFormatter.stringFromDate(date)
-        date = dP_end.date
-        let endString = dateFormatter.stringFromDate(date)
+//        var date = dP_begin.date
+//        //dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+//
+//        let beginString = dateFormatter.stringFromDate(date)
+//        date = dP_end.date
+//        let endString = dateFormatter.stringFromDate(date)
+//        print(beginString)
+//        print(endString)
         
         selectedEvent_Date = Event_Date(event: event!, begin: dP_begin.date, end: dP_end.date, insertIntoManagedObjectContext: managedObjectContext)
         updateEvent()   // evtl. event == nil
         event!.addEvent_Date(selectedEvent_Date!)
         updateEvent()       // infos abspeichern
         
-        
-        print(beginString)
-        print(endString)
         tableView.reloadData()
-        
     }
+    
     //MARK: Button Add Teilnehmer
     
     @IBOutlet weak var btn_addMember: UIButton!
-    
     
     
     //MARK: Textfield
@@ -146,14 +151,6 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         return true
     }
     
-//    func datePickerValueChanged(sender:UIDatePicker) {
-//        
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-//        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-//        
-//       // dateTextField.text = dateFormatter.stringFromDate(sender.date)
-//    }
     
     // MARK: Date Picker Ausbilder
     @IBOutlet weak var label_AusbilderDate: UILabel!
@@ -228,12 +225,10 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("Cells.count:  \(cells.count)")
+        var result = 0
          if(tableView == self.tableView){
-            if (event == nil){
-                return 0
-            }else{
-               // print("EventHasDates.Count: \(event!.eventHasDates!.count)")
-                return event!.eventHasDates!.count
+            if (event != nil){
+                result = event!.eventHasDates!.count
             }
          }else if( tableView == self.trainerTableView){
             guard let sectionData = fetchedRSC_Trainer.sections?[section] else {
@@ -241,12 +236,17 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             }
             return sectionData.numberOfObjects
          }
-         else{
-            return 0
-        }
+         else if( tableView == self.memberTableView){
+            if(event != nil){
+                return event!.eventHasMembers!.count
+            }
+         }
+        
+        return result
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // Date
         if(tableView == self.tableView){
             let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellEDDate)
             eventDates = event!.eventHasDates!.allObjects as! [Event_Date]
@@ -260,7 +260,9 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             cell!.textLabel!.text = beginString + "  -  " + endString
             return cell!
         }
+        // Trainer
         else if(tableView == self.trainerTableView){
+            // Alle Trainer laden!
             trainer = fetchedRSC_Trainer.objectAtIndexPath(indexPath) as? Trainer
             let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellEDTrainer) as! EDTrainerTableCell
             cell.label_name.text = trainer!.firstname! + ", " + trainer!.surname!
@@ -274,6 +276,17 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
            
             cell.cellDelegate = self
             return cell
+        }
+        // Member
+        else if(tableView == self.memberTableView){
+            // nur Member laden die in Event bereits sind
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellEDMember) as! EDMemberTableCell
+            
+            var memberArray = event!.hasMembersAsArray()
+            cell.member = memberArray[ indexPath.row ]
+            cell.setData()
+            return cell
+            
         }
         else{
             
@@ -336,7 +349,24 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     
     @IBOutlet weak var memberTableView: UITableView!
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Constants.ShowEDMemberPopover{
+            let popVC = segue.destinationViewController as! EDMemberPopoverController
+            popVC.event = event!        // Event übergeben!
+            
+            let contPop = popVC.popoverPresentationController
+            if (contPop != nil) {
+                contPop?.delegate = self
+            }
+
+        }
+    }
+
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+        memberTableView.reloadData()
+    }
     
+
     
     //MARK: Update Data
     

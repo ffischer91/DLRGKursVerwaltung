@@ -30,4 +30,13 @@ class Event: NSManagedObject {
         arr.removeAtIndex(arr.indexOf(value)!)
         self.eventHasDates = NSSet(array: arr)
     }
+    
+    func hasMembersAsArray()-> [Member]{
+        //let set = self.eventHasMembers
+         //return set!.allObjects as! [Member]      // Array
+        let sortDescriptor = NSSortDescriptor(key: "surname", ascending: true,selector: #selector(NSString.localizedStandardCompare))
+        let sortedBySurname = self.eventHasMembers!.sortedArrayUsingDescriptors([sortDescriptor]) as! [Member]
+       
+        return sortedBySurname
+    }
 }

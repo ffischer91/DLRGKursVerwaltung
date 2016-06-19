@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MemberDetailTabViewController: UITableViewController , ShowPickerProtocol{
+class MemberDetailTabViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate ,ShowPickerProtocol{
     
     var cells: [UITableViewCell] = []
     
@@ -75,10 +75,8 @@ class MemberDetailTabViewController: UITableViewController , ShowPickerProtocol{
             case 7:
                 let cellText = cells[ i ] as! MDTextViewCell
                 cellText.textView.text = member!.note
-            case 8:
-                let cellTable = cells[ i ] as! MDTableCell
-                // einfach fertiges Array mit Infos in Controller rüberschieben!
-                cellTable.test()
+//            case 8:
+//                let cellTable = cells[ i ] as! MDTableCell
             default:
                 print("error: index ist bei: \(i)")
             }
@@ -96,7 +94,7 @@ class MemberDetailTabViewController: UITableViewController , ShowPickerProtocol{
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.row {
-        case 5,8:
+        case 5:
             return 275.0
         case 7:
             return 140.0
@@ -105,46 +103,74 @@ class MemberDetailTabViewController: UITableViewController , ShowPickerProtocol{
         }
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if(section == 1){
+            return "Eingetragene Veranstaltungen"
+        }
+        else{
+            return nil
+        }
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("Cells.count:  \(cells.count)")
-        return 9
+        var result = 8  // section == 0
+        if(section == 1){
+            if( member != nil && member!.hasEvents != nil ){
+                result = member!.hasEvents!.count
+            }else{
+                result = 0
+            }
+        }
+        return result
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.row {
-            case 0,1,2,3,4:
-                let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTextfieldCell
-                cell.label.text = Constants.CellMDLableText[ indexPath.row]
-                cells.append(cell)
-                return cell
-            case  5:       //Photo
-                let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDPhotoCell
-                cell.delegate = self;
-                cells.append(cell)
-                return cell
-            case 6:         //Switch
-                let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDSwitchCell
-                cell.label.text = Constants.CellMDLableText[ indexPath.row]
-                cells.append(cell)
-                return cell
-            case 7:     // TextView=>Notiz
-                let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTextViewCell
-                cell.label.text = Constants.CellMDLableText[ indexPath.row]
-                cells.append(cell)
-                return cell
-            case 8:     //TableView
-                let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTableCell
-                cell.label.text = Constants.CellMDLableText[ indexPath.row]
-                cells.append(cell)
-                return cell
-            default:
-                let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTextfieldCell
-                cell.label.text = "Default"
-                return cell
+        if (indexPath.section == 0)
+        {
+            switch indexPath.row {
+                case 0,1,2,3,4:
+                    let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTextfieldCell
+                    cell.label.text = Constants.CellMDLableText[ indexPath.row]
+                    cell.textField.delegate = self
+                    cells.append(cell)
+                    return cell
+                case  5:       //Photo
+                    let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDPhotoCell
+                    cell.delegate = self;
+                    cells.append(cell)
+                    return cell
+                case 6:         //Switch
+                    let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDSwitchCell
+                    cell.label.text = Constants.CellMDLableText[ indexPath.row]
+                    cells.append(cell)
+                    return cell
+                case 7:     // TextView=>Notiz
+                    let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTextViewCell
+                    cell.label.text = Constants.CellMDLableText[ indexPath.row]
+                    cell.textView.delegate = self
+                    cells.append(cell)
+                    return cell
+//                case 8:     //TableView
+//                    let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTableCell
+//                    cell.label.text = Constants.CellMDLableText[ indexPath.row]
+//                    cells.append(cell)
+//                    return cell
+                default:
+                    let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTextfieldCell
+                    cell.label.text = "Default"
+                    return cell
+                }
+        }else{
+            let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTableCell
+            let events = member!.hasEventsAsArray()
+            print("indexPath.row: \(indexPath.row)")
+            cell.label_name.text = events[indexPath.row].name
+            return cell
         }
     }
     
@@ -166,8 +192,6 @@ class MemberDetailTabViewController: UITableViewController , ShowPickerProtocol{
     
     
     func editMember(){
-        print("editMember()")
-        
         getInfoOfCells()        // geht alle Zeilen durch und sammelt setzt die Infos in member!
         
         do {
@@ -179,7 +203,7 @@ class MemberDetailTabViewController: UITableViewController , ShowPickerProtocol{
 
     
     func getInfoOfCells(){
-        for i in 0 ... 8 {                       //Dont work: more empty cells in cells    <cells.count {
+        for i in 0 ... 7 {                       //Dont work: more empty cells in cells    <cells.count {
             switch i {
             case 0:
                 let cell = cells[ i ] as! MDTextfieldCell
@@ -207,8 +231,8 @@ class MemberDetailTabViewController: UITableViewController , ShowPickerProtocol{
             case 7:
                 let cellText = cells[ i ] as! MDTextViewCell
                 member!.note = cellText.textView.text
-            case 8:
-                let cellTab = cells[ i ] as! MDTableCell
+//            case 8:
+//                let cellTab = cells[ i ] as! MDTableCell
             default:
                 print("error: index ist bei: \(i)")
             }
@@ -222,7 +246,20 @@ class MemberDetailTabViewController: UITableViewController , ShowPickerProtocol{
     func dismissNewScreen() -> Void{
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+        textField.resignFirstResponder()
+        return true
+    }
     
+    // mit Return Taste aus Text View --> kein Zeilenumbruch möglich
+//    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+//        if text == "\n"  // Recognizes enter key in keyboard
+//        {
+//            textView.resignFirstResponder()
+//            return false
+//        }
+//        return true
+//    }
     
 }
 

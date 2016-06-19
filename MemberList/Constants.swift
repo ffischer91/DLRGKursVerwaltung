@@ -39,6 +39,8 @@ public struct Constants {
     static let Cell_Teilnehmer = 2
     static let Cell_Helfer = 3
     
+    static let ShowEDMemberPopover = "Show Member Popover"
+    
     
     
     static let EntityMember = "Member"
