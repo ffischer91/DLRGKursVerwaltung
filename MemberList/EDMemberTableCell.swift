@@ -10,6 +10,8 @@ import UIKit
 
 class EDMemberTableCell: UITableViewCell {
 
+    var delegate: SwichChanged_Member?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,6 +32,7 @@ class EDMemberTableCell: UITableViewCell {
     @IBOutlet weak var switch_Member: UISwitch!
     
     func setData(){
+        switch_Member.on = false
         if(member != nil){
             label_firstname.text = member!.firstname
             label_surname.text = member!.surname
@@ -39,4 +42,8 @@ class EDMemberTableCell: UITableViewCell {
             }
         }
     }
+}
+
+protocol SwichChanged_Member {
+    func switchChanged_Member(sender: EDMemberTableCell )
 }

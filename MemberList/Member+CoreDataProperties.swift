@@ -23,5 +23,6 @@ extension Member {
     @NSManaged var street: String?
     @NSManaged var surname: String?
     @NSManaged var hasEvents: NSSet?
+    @NSManaged var hasEvent_Date: NSSet?
 
 }

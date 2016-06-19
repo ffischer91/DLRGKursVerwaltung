@@ -39,6 +39,30 @@ class Member: NSManagedObject{
         return sortedByName
     }
     
+    func containsEvent_Date(value: Event_Date)->Bool{
+        if (self.hasEvent_Date != nil){
+            return self.hasEvent_Date!.containsObject(value)
+        }else{
+            return false
+        }
+    }
+    
+    func removeEvent_Date(value: Event_Date){
+        if(containsEvent_Date(value)){
+            let set = self.hasEvent_Date
+            var arr = set!.allObjects as! [Event_Date]      // Array
+            arr.removeAtIndex(arr.indexOf(value)!)
+            self.hasEvent_Date = NSSet(array: arr)
+        }
+    }
+    
+    func addEvent_Date(newValue: Event_Date) {
+        let set = self.hasEvent_Date                    //NSSet
+        var arr = set!.allObjects as! [Event_Date]      // Array
+        arr.append(newValue)
+        self.hasEvent_Date = NSSet(array: arr)
+    }
+    
 }
 
 

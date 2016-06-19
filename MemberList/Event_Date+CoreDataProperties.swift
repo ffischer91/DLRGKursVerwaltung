@@ -18,5 +18,6 @@ extension Event_Date {
     @NSManaged var end: NSDate?
     @NSManaged var hasEvent: Event?
     @NSManaged var hasTrainer: NSSet?
+    @NSManaged var hasMember: NSSet?
 
 }

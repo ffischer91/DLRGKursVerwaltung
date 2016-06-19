@@ -10,6 +10,7 @@
         <attribute name="beginn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="hasEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="eventHasDates" inverseEntity="Event" syncable="YES"/>
+        <relationship name="hasMember" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" inverseName="hasEvent_Date" inverseEntity="Member" syncable="YES"/>
         <relationship name="hasTrainer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trainer" inverseName="hasEvent_Date" inverseEntity="Trainer" syncable="YES"/>
     </entity>
     <entity name="Member" representedClassName=".Member" syncable="YES">
@@ -21,6 +22,7 @@
         <attribute name="plz" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasEvent_Date" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event_Date" inverseName="hasMember" inverseEntity="Event_Date" syncable="YES"/>
         <relationship name="hasEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="eventHasMembers" inverseEntity="Event" syncable="YES"/>
     </entity>
     <entity name="Trainer" representedClassName=".Trainer" syncable="YES">
@@ -31,8 +33,8 @@
     </entity>
     <elements>
         <element name="Event" positionX="133" positionY="-147" width="128" height="103"/>
-        <element name="Event_Date" positionX="322" positionY="-81" width="128" height="28"/>
-        <element name="Member" positionX="-146" positionY="-108" width="128" height="180"/>
-        <element name="Trainer" positionX="169" positionY="144" width="128" height="103"/>
+        <element name="Event_Date" positionX="313" positionY="-72" width="128" height="118"/>
+        <element name="Member" positionX="-83" positionY="-144" width="128" height="193"/>
+        <element name="Trainer" positionX="466" positionY="-58" width="128" height="103"/>
     </elements>
 </model>

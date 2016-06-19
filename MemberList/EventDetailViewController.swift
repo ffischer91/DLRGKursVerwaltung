@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CellSwichChangedProtocol, UIPopoverPresentationControllerDelegate{
+class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CellSwichChangedProtocol, UIPopoverPresentationControllerDelegate, SwichChanged_Member{
 
     var event: Event?
     var selectedEvent_Date: Event_Date?
@@ -21,6 +21,8 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     var eventDatePicker: Event_Date?
     var eventDatePickerMember: Event_Date?
     
+    var member: Member?
+    
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var fetchedRSC_Trainer: NSFetchedResultsController = NSFetchedResultsController()
@@ -29,8 +31,6 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tF_name.delegate = self
-        tf_location.delegate = self
         self.viewAllgemein.hidden = false
         self.viewTermine.hidden = true
         self.viewAusbilder.hidden = true
@@ -39,13 +39,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         dP_begin.date = NSDate() //current date
         dP_end.date = NSDate()  //current date
         
-        // Date Table View
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        // Trainer Table View
-        self.trainerTableView.delegate = self
-        self.trainerTableView.dataSource = self
+        // Trainer fetch all
         fetchedRSC_Trainer = getFetchedRSC_Trainer()
         fetchedRSC_Trainer.delegate = self
         do{
@@ -53,11 +47,9 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         } catch let error as NSError {
             print("Could not fetch Trainer \(error), \(error.userInfo)")
         }
-        // Member Table View
-        self.memberTableView.delegate = self
-        self.memberTableView.dataSource = self
-        self.memberTableView.allowsSelection = false
-        self.memberTableView.reloadData()
+        
+        // alle Delegates auf self setzen
+        self.setDelegates()
         
         // Datumsformat
         dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
@@ -65,11 +57,41 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         // Daten setzen
         if(event != nil){
             setDataToView()
+            hideFields(false)
+        }else{
+            hideFields(true)
         }
-        
-        
-        // Do any additional setup after loading the view.
     }
+    
+    func hideFields(hide: Bool){
+        btn_addMember.hidden = hide
+        label_AusbilderDate.hidden = hide
+        label_AusbilderDate.hidden = hide
+        stepper_Ausbilder.hidden = hide
+        stepper_Teilnehmer.hidden = hide
+    }
+    
+    func setDelegates(){
+        // Member Table View
+        self.memberTableView.delegate = self
+        self.memberTableView.dataSource = self
+        self.memberTableView.allowsSelection = false
+        //self.memberTableView.reloadData()
+        
+        // Trainer Table View
+        self.trainerTableView.delegate = self
+        self.trainerTableView.dataSource = self
+        self.trainerTableView.allowsSelection = false
+        
+        // Date Table View
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        //Textfields
+        tF_name.delegate = self
+        tf_location.delegate = self
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -185,7 +207,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         stepper_Ausbilder.minimumValue = 0.0
         stepper_Ausbilder.maximumValue = Double(eventDates.count - 1)
         stepper_Ausbilder.stepValue = 1.0
-        // stepper Tab Teilnehmer
+        // Stepper Tab Teilnehmer
         stepper_Teilnehmer.minimumValue = 0.0
         stepper_Teilnehmer.maximumValue = Double(eventDates.count - 1)
         stepper_Teilnehmer.stepValue = 1.0
@@ -285,6 +307,13 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             var memberArray = event!.hasMembersAsArray()
             cell.member = memberArray[ indexPath.row ]
             cell.setData()
+            if (member!.hasEvent_Date?.count > 0 && eventDatePickerMember != nil){
+                if(member!.hasEvent_Date!.containsObject(eventDatePickerMember!)){
+                    cell.switch_Member.on = true
+                }
+            }
+            
+            cell.delegate = self
             return cell
             
         }
@@ -330,7 +359,6 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             trainer!.removeEvent_Date(eventDatePicker!)
             updateEvent()
         }
-        print("von Drüben aufgerufen")
     }
     
     func trainerFetchRequest() -> NSFetchRequest {
@@ -364,6 +392,19 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
 
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         memberTableView.reloadData()
+    }
+    
+    func switchChanged_Member(sender: EDMemberTableCell ){
+        member = sender.member
+        
+        if (sender.switch_Member.on){  //JA
+            member!.addEvent_Date(eventDatePickerMember!)
+            updateEvent()
+        }else{  //NEIN
+            member!.removeEvent_Date(eventDatePickerMember!)
+            updateEvent()
+        }
+        print("von Drüben aufgerufen")
     }
     
 
