@@ -52,6 +52,7 @@ class ImportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.title = "Import"
         if(url != nil){
             self.textView.text = "Received: \n\n \(self.url!)"
         }

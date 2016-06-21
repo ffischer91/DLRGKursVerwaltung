@@ -27,4 +27,5 @@ class MemberTableViewCell: UITableViewCell {
     
     @IBOutlet weak var memberImageView: UIImageView!
 
+    @IBOutlet weak var birthLabel: UILabel!
 }

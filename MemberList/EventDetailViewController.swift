@@ -307,8 +307,8 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             var memberArray = event!.hasMembersAsArray()
             cell.member = memberArray[ indexPath.row ]
             cell.setData()
-            if (member!.hasEvent_Date?.count > 0 && eventDatePickerMember != nil){
-                if(member!.hasEvent_Date!.containsObject(eventDatePickerMember!)){
+            if (cell.member!.hasEvent_Date?.count > 0 && eventDatePickerMember != nil){
+                if(cell.member!.hasEvent_Date!.containsObject(eventDatePickerMember!)){
                     cell.switch_Member.on = true
                 }
             }

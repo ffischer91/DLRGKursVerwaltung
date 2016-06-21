@@ -95,7 +95,7 @@ class TrainerDetailController: UITableViewController {
         }
         else{
             let cellevent = tableView.dequeueReusableCell(indexPath: indexPath) as TDEventTabCell
-            cellevent.label_EventBeginn.text = trainer_EventDates[indexPath.row].beginn!.date_toString()
+            cellevent.label_EventBeginn.text = trainer_EventDates[indexPath.row].beginn!.date_toString_DateTime()
             cellevent.label_EventName.text = trainer_EventDates[indexPath.row].hasEvent!.name
             //cellevent.label_EventName.text = "dsfaewgfa"
             return cellevent

@@ -9,14 +9,12 @@
 /* Begin PBXBuildFile section */
 		5C0478421CFF455E00BCD6FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0478411CFF455E00BCD6FA /* Constants.swift */; };
 		5C15425E1CFDE6040044F295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15425D1CFDE6040044F295 /* AppDelegate.swift */; };
-		5C1542601CFDE6040044F295 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15425F1CFDE6040044F295 /* ViewController.swift */; };
 		5C1542631CFDE6040044F295 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1542611CFDE6040044F295 /* Main.storyboard */; };
 		5C1542661CFDE6040044F295 /* MemberList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542641CFDE6040044F295 /* MemberList.xcdatamodeld */; };
 		5C1542681CFDE6040044F295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C1542671CFDE6040044F295 /* Assets.xcassets */; };
 		5C15426B1CFDE6040044F295 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1542691CFDE6040044F295 /* LaunchScreen.storyboard */; };
 		5C1542761CFDE6040044F295 /* MemberListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542751CFDE6040044F295 /* MemberListTests.swift */; };
 		5C1542811CFDE6040044F295 /* MemberListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542801CFDE6040044F295 /* MemberListUITests.swift */; };
-		5C15428F1CFDF9420044F295 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15428E1CFDF9420044F295 /* MemberViewController.swift */; };
 		5C1542961CFE13D20044F295 /* Member+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542941CFE13D20044F295 /* Member+CoreDataProperties.swift */; };
 		5C1542971CFE13D20044F295 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542951CFE13D20044F295 /* Member.swift */; };
 		5C1542991CFE1B200044F295 /* MemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1542981CFE1B200044F295 /* MemberTableViewController.swift */; };
@@ -75,7 +73,6 @@
 		5C0478411CFF455E00BCD6FA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5C15425A1CFDE6030044F295 /* MemberList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemberList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C15425D1CFDE6040044F295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C15425F1CFDE6040044F295 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5C1542621CFDE6040044F295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C1542651CFDE6040044F295 /* MemberList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemberList.xcdatamodel; sourceTree = "<group>"; };
 		5C1542671CFDE6040044F295 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,7 +84,6 @@
 		5C15427C1CFDE6040044F295 /* MemberListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemberListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C1542801CFDE6040044F295 /* MemberListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListUITests.swift; sourceTree = "<group>"; };
 		5C1542821CFDE6040044F295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C15428E1CFDF9420044F295 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		5C1542941CFE13D20044F295 /* Member+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5C1542951CFE13D20044F295 /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		5C1542981CFE1B200044F295 /* MemberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewController.swift; sourceTree = "<group>"; };
@@ -198,7 +194,6 @@
 				5C617D011D03208300493B29 /* Event */,
 				5C617CFF1D03207400493B29 /* Member */,
 				5C15425D1CFDE6040044F295 /* AppDelegate.swift */,
-				5C15425F1CFDE6040044F295 /* ViewController.swift */,
 				5C1542611CFDE6040044F295 /* Main.storyboard */,
 				5C1542671CFDE6040044F295 /* Assets.xcassets */,
 				5C1542691CFDE6040044F295 /* LaunchScreen.storyboard */,
@@ -242,7 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				5CDABA121D05FED5002115DA /* MemberDetail */,
-				5C15428E1CFDF9420044F295 /* MemberViewController.swift */,
 				5C1542981CFE1B200044F295 /* MemberTableViewController.swift */,
 				5C45A4241CFEEFDF003D4922 /* MemberTableViewCell.swift */,
 			);
@@ -497,7 +491,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C70D53B1D08630E00D11E5B /* Event_Date+CoreDataProperties.swift in Sources */,
-				5C15428F1CFDF9420044F295 /* MemberViewController.swift in Sources */,
 				5CA769E21D16D8D800F17CA8 /* EDMemberPopoverController.swift in Sources */,
 				5CDABA1A1D0605D2002115DA /* MDSwitchCell.swift in Sources */,
 				5C57F64C1D09F49100847D67 /* TrainerDetailController.swift in Sources */,
@@ -510,7 +503,6 @@
 				5C1542971CFE13D20044F295 /* Member.swift in Sources */,
 				5C70D5391D08630E00D11E5B /* Trainer+CoreDataProperties.swift in Sources */,
 				5CA769DE1D16CEE700F17CA8 /* EDMemberTableCell.swift in Sources */,
-				5C1542601CFDE6040044F295 /* ViewController.swift in Sources */,
 				5C1542991CFE1B200044F295 /* MemberTableViewController.swift in Sources */,
 				5CDABA1C1D0605ED002115DA /* MDPhotoCell.swift in Sources */,
 				5C70D52D1D0855B500D11E5B /* MDTableCell.swift in Sources */,

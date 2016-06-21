@@ -68,6 +68,8 @@ class MemberDetailTabViewController: UITableViewController, UITextFieldDelegate,
                         cellPhoto.photo!.contentMode = .ScaleAspectFit
                         cellPhoto.photo.image = UIImage(data: member!.image!)
                     }
+                }else{  // default Bild
+                    cellPhoto.photo.image = UIImage(named: "person_swim")
                 }
             case 6:
                 let cellSwitch = cells[ i ] as! MDSwitchCell
@@ -75,8 +77,6 @@ class MemberDetailTabViewController: UITableViewController, UITextFieldDelegate,
             case 7:
                 let cellText = cells[ i ] as! MDTextViewCell
                 cellText.textView.text = member!.note
-//            case 8:
-//                let cellTable = cells[ i ] as! MDTableCell
             default:
                 print("error: index ist bei: \(i)")
             }
@@ -117,7 +117,6 @@ class MemberDetailTabViewController: UITableViewController, UITextFieldDelegate,
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("Cells.count:  \(cells.count)")
         var result = 8  // section == 0
         if(section == 1){
             if( member != nil && member!.hasEvents != nil ){
@@ -155,11 +154,6 @@ class MemberDetailTabViewController: UITableViewController, UITextFieldDelegate,
                     cell.textView.delegate = self
                     cells.append(cell)
                     return cell
-//                case 8:     //TableView
-//                    let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTableCell
-//                    cell.label.text = Constants.CellMDLableText[ indexPath.row]
-//                    cells.append(cell)
-//                    return cell
                 default:
                     let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTextfieldCell
                     cell.label.text = "Default"
@@ -231,8 +225,6 @@ class MemberDetailTabViewController: UITableViewController, UITextFieldDelegate,
             case 7:
                 let cellText = cells[ i ] as! MDTextViewCell
                 member!.note = cellText.textView.text
-//            case 8:
-//                let cellTab = cells[ i ] as! MDTableCell
             default:
                 print("error: index ist bei: \(i)")
             }

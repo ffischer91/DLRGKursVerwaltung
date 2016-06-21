@@ -45,13 +45,17 @@ class Event_Date: NSManagedObject {
 
 extension NSDate{
     
-    func date_toString() -> String{
+    func date_toString_DateTime() -> String{
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
         return dateFormatter.stringFromDate(self)
     }
     
-
+    func date_toString_Date() -> String{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        return dateFormatter.stringFromDate(self)
+    }
     
         func hour() -> Int
         {

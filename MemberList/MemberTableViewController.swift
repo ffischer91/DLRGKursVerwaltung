@@ -51,22 +51,6 @@ class MemberTableViewController: UITableViewController, NSFetchedResultsControll
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //tableView.reloadData()
-//        //1
-//        let appDelegate =   UIApplication.sharedApplication().delegate as! AppDelegate
-//        
-//        let managedContext = appDelegate.managedObjectContext
-//        
-//        //2
-//        let fetchRequest = NSFetchRequest(entityName: Constants.EntityMember)
-//        
-//        //3
-//        do {
-//            let results = try managedContext.executeFetchRequest(fetchRequest)
-//            members = results as! [Member]
-//        } catch let error as NSError {
-//            print("Could not fetch Members \(error), \(error.userInfo)")
-//        }
     }
     
     
@@ -77,58 +61,10 @@ class MemberTableViewController: UITableViewController, NSFetchedResultsControll
 
     // MARK: - Table view data source
 
-   /* override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 5
-    }
-*/
-
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print("Members.count:  \(members.count)")
-//        return members.count
-//    }
-
- 
-//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        
-//        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellReuseIdentifier, forIndexPath: indexPath) as! MemberTableViewCell
-//        let member = members[indexPath.row]
-//        cell.firstnameLabel.text = member.firstname
-//        cell.surenameLabel.text = member.surname
-//        // was tun wenn nil?
-//        if(member.image != nil){
-//             cell.memberImageView.image = UIImage(data: member.image!)
-//        }
-//         else{
-//            print("kein Bild")
-//        }
-//        //cell.memberImageView.image = UIImage(data: member.image!)
-//        
-//        
-//        return cell
-//    }
-    
-    
-//    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-//        
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//            let selectedNSManagedObject = fetchedResultController.objectAtIndexPath(indexPath) as! NSManagedObject
-//        }
-//        //selectedmember = members[indexPath.row]
-//        return indexPath
-//    }
-
-    
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == Constants.ShowDetailMemberSegue{
-//            if let memberVC = segue.destinationViewController as? MemberViewController{
-//                memberVC.member = selectedmember
-//            }
-//        }
+
         if segue.identifier == Constants.ShowNewMemberSegue{
-            if let memberVC = segue.destinationViewController as? MemberViewController{
+            if let memberVC = segue.destinationViewController as? MemberDetailTabViewController{
                 memberVC.member = nil
             }
         }
@@ -155,7 +91,7 @@ class MemberTableViewController: UITableViewController, NSFetchedResultsControll
     
     func memberFetchRequest() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: Constants.EntityMember)
-        let sortDescriptor = NSSortDescriptor(key: "firstname", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "surname", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
@@ -175,6 +111,9 @@ class MemberTableViewController: UITableViewController, NSFetchedResultsControll
         let member = fetchedResultController.objectAtIndexPath(indexPath) as! Member
         cell.firstnameLabel.text = member.firstname
         cell.surenameLabel.text = member.surname
+        if(member.birth != nil){
+            cell.birthLabel.text = member.birth!.date_toString_Date()
+        }
         // was tun wenn nil?
         if(member.image != nil){
             cell.memberImageView.image = UIImage(data: member.image!)
