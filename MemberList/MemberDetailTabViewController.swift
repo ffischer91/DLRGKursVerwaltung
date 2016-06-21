@@ -162,7 +162,6 @@ class MemberDetailTabViewController: UITableViewController, UITextFieldDelegate,
         }else{
             let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MDTableCell
             let events = member!.hasEventsAsArray()
-            print("indexPath.row: \(indexPath.row)")
             cell.label_name.text = events[indexPath.row].name
             return cell
         }
@@ -176,8 +175,8 @@ class MemberDetailTabViewController: UITableViewController, UITextFieldDelegate,
         
         do {
             try managedObjectContext.save()
-            print("createMember(), saved finished")
-            print("saved Member: \(member)")
+            //print("createMember(), saved finished")
+            //print("saved Member: \(member)")
             
         } catch let error as NSError{
             print("Could not save \(error), \(error.userInfo)")
