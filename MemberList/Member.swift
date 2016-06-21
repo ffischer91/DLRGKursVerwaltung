@@ -9,6 +9,17 @@
 import Foundation
 import CoreData
 
+//@NSManaged var city: String?
+//@NSManaged var dlrg: NSNumber?
+//@NSManaged var firstname: String?
+//@NSManaged var image: NSData?
+//@NSManaged var note: String?
+//@NSManaged var plz: String?
+//@NSManaged var street: String?
+//@NSManaged var surname: String?
+//@NSManaged var birth: NSDate?
+//@NSManaged var hasEvent_Date: NSSet?
+//@NSManaged var hasEvents: NSSet?
 
 class Member: NSManagedObject{
 
@@ -17,6 +28,25 @@ class Member: NSManagedObject{
 
    override var description: String {
         return "[Member, First: \(self.firstname!), Surname: \(self.surname!) ]"
+    }
+    
+    convenience init(firstname: String, surname: String, birth: String, street: String, plz: String, city: String, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+        
+        let entity = NSEntityDescription.entityForName("Member", inManagedObjectContext: context)!
+        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.firstname = firstname
+        self.surname = surname
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let birth_date =  dateFormatter.dateFromString( birth )
+        
+        self.birth = birth_date
+        self.street = street
+        self.plz = plz
+        self.city = city
+        self.dlrg = false
+        
     }
     
     func addEvent(newValue: Event) {

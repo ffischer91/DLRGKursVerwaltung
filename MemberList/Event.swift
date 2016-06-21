@@ -12,10 +12,16 @@ import CoreData
 
 class Event: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
-//    @NSManaged func addEvent_Date(value:Event_Date)
-//    @NSManaged func removeEvent_Date(value:Event_Date)
-//    @NSManaged func addEvent_Dates(value:Set<Event_Date>)
+    convenience init(name: String, location: String, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+        
+        let entity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)!
+        self.init(entity: entity, insertIntoManagedObjectContext: context)
+       
+        self.name = name
+        self.location = location
+    }
+    
+    
     
     func addEvent_Date(newValue: Event_Date) {
         let set = self.eventHasDates                    //NSSet

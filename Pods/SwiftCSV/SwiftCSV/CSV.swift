@@ -9,7 +9,7 @@
 import Foundation
 
 public class CSV {
-    static private let comma: Character = ","
+    static private let comma: Character = ";"
     
     public var header: [String]!
     var _rows: [[String: String]]? = nil
