@@ -271,7 +271,8 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         // Date
         if(tableView == self.tableView){
             let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellEDDate)
-            eventDates = event!.eventHasDates!.allObjects as! [Event_Date]
+           // eventDates = event!.eventHasDates!.allObjects as! [Event_Date]
+            eventDates = event!.hasEventDatesAsArray()
             let eventDate = eventDates[indexPath.row]
         
             let beginString = dateFormatter.stringFromDate(eventDate.beginn!)
