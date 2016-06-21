@@ -33,7 +33,14 @@ class TabBarController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+}
 
-
+extension UIViewController{
+    var contentViewController : UIViewController {
+        if let navCon = self as? UINavigationController{
+            return navCon.visibleViewController!
+        }else{
+            return self
+        }
+    }
 }

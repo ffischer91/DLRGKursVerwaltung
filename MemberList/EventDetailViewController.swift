@@ -15,7 +15,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     var event: Event?
     var selectedEvent_Date: Event_Date?
     var eventDates: [ Event_Date] = [ ]
-    var eventDates_Set : NSSet?
+   // var eventDates_Set : NSSet?
     let dateFormatter = NSDateFormatter()
     
     var trainer: Trainer?
@@ -23,7 +23,6 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     var eventDatePickerMember: Event_Date?
     
     var member: Member?
-    
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var fetchedRSC_Trainer: NSFetchedResultsController = NSFetchedResultsController()
@@ -62,8 +61,9 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         }else{
             hideFields(true)
         }
-        
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
     }
     
     func hideFields(hide: Bool){
@@ -206,7 +206,8 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         tF_name.text = event!.name
         tf_location.text = event!.location
         
-        eventDates = event!.eventHasDates!.allObjects as! [Event_Date]
+        //eventDates = event!.eventHasDates!.allObjects as! [Event_Date]
+        eventDates = event!.hasEventDatesAsArray()
         stepper_Ausbilder.minimumValue = 0.0
         stepper_Ausbilder.maximumValue = Double(eventDates.count - 1)
         stepper_Ausbilder.stepValue = 1.0
@@ -225,22 +226,13 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             label_AusbilderDate.text = dateFormatter.stringFromDate(eventDates[0].beginn!)
             let eDA = eventDates[ 0 ]
             eventDatePicker = eDA
-            
             //Chart
-            let chart_dates = event!.hasEventDatesForChart()
-            let countTeilnehmer = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0]
-            print (countTeilnehmer.count)
-            
-            setChartBarGroupDataSet(chart_dates, values: event!.sumTrainerArray , values2: event!.sumMemberArray)
-            
+            self.refreshChart()
         }else{
             label_AusbilderDate.text = ""
             label_TeilnehmerDate.text = ""
             
         }
-        
-        
-        
     }
     
     //MARK: DateTable
@@ -280,6 +272,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         
         return result
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Date
@@ -328,12 +321,8 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
                     cell.switch_Member.on = true
                 }
             }
-            
-            
             return cell
-            
-        }
-        else{
+        }else{
             
             return UITableViewCell()
         }
@@ -433,15 +422,10 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
-            //let dataEntry = BarChartDataEntry(values: values[i], xIndex: i, label: "terst") //(values: [Double], xIndex: i, label: "test")
             dataEntries.append(dataEntry)
         }
         
-        
-        
-        let chartDataSet1 = BarChartDataSet(yVals: dataEntries, label: "Teilnehmer")
-
-        
+        let chartDataSet1 = BarChartDataSet(yVals: dataEntries, label: Constants.Teilnehmer)
         let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet1)
         barChartView.data = chartData
 
@@ -456,43 +440,50 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         
         for i in 0..<dataPoints.count {
             
-            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            var dataEntry = BarChartDataEntry(value: values2[i], xIndex: i)
+            dataEntries2.append(dataEntry)
+            
+            dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
             dataEntries.append(dataEntry)
         }
-        
-        
-        for i in 0..<dataPoints.count {
-            
-            let dataEntry = BarChartDataEntry(value: values2[i], xIndex: i)
-            dataEntries2.append(dataEntry)
-        }
-        
         
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: Constants.Ausbilder)
         let chartDataSet2 = BarChartDataSet(yVals: dataEntries2, label: Constants.Teilnehmer)
         
         chartDataSet2.colors =  [UIColor(red: 255/255, green: 70/255, blue: 108/255, alpha: 1)]
-        
         chartDataSet.colors =  [UIColor(red: 49/255, green: 27/255, blue: 146/255, alpha: 1)]
         
         
         let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet2]
-        
         let data = BarChartData(xVals: dataPoints, dataSets: dataSets)
-        
         barChartView.data = data
         
-        barChartView.descriptionText = ""
-        
-        
+        barChartView.descriptionText = ""   // keine Beschreibung, wird mitten im Diagramm angezeigt
+
         barChartView.rightAxis.drawGridLinesEnabled = false
         barChartView.rightAxis.drawAxisLineEnabled = false
         barChartView.rightAxis.drawLabelsEnabled = false
         
         
-        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInBounce)
+        //barChartView.legend.enabled = true//false
+        
+        barChartView.leftAxis.drawGridLinesEnabled = false
+        barChartView.leftAxis.drawAxisLineEnabled = false//true
         
         
+        barChartView.xAxis.drawGridLinesEnabled = true//false
+        barChartView.xAxis.drawLabelsEnabled = true
+        barChartView.xAxis.setLabelsToSkip(0)
+
+        barChartView.animate(xAxisDuration:1.0, yAxisDuration: 1.0, easingOption: .EaseInBounce)
+   
+    }
+    
+    
+    func refreshChart(){
+        let chart_dates = event!.hasEventDatesForChart()
+        setChartBarGroupDataSet(chart_dates, values: event!.sumTrainerArray , values2: event!.sumMemberArray)
+        self.barChartView.setNeedsDisplay()
     }
     
     //MARK: Update Data
@@ -504,7 +495,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             event = Event(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
         }
         getDataFromView()   //Daten Holen
-            
+        refreshChart()
         do {
             try managedObjectContext.save()
             print("updateEvent(), saved finished \(event)")

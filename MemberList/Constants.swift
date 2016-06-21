@@ -56,3 +56,4 @@ public struct Constants {
     static let Ausbilder = "Ausbilder"
     static let Teilnehmer = "Teilnehmer"
 }
+

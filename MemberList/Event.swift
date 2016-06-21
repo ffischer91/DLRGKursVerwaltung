@@ -39,8 +39,6 @@ class Event: NSManagedObject {
     }
     
     func hasMembersAsArray()-> [Member]{
-        //let set = self.eventHasMembers
-         //return set!.allObjects as! [Member]      // Array
         let sortDescriptor = NSSortDescriptor(key: "surname", ascending: true,selector: #selector(NSString.localizedStandardCompare))
         let sortedBySurname = self.eventHasMembers!.sortedArrayUsingDescriptors([sortDescriptor]) as! [Member]
        
@@ -48,12 +46,15 @@ class Event: NSManagedObject {
     }
     
     func hasEventDatesAsArray()-> [Event_Date]{
-        let sortDescriptor = NSSortDescriptor(key: "beginn", ascending: true,selector: #selector(NSDate.compare))//NSString.localizedStandardCompare))
+        let sortDescriptor = NSSortDescriptor(key: "beginn", ascending: true,selector: #selector(NSDate.compare))
         let sortedByDate = self.eventHasDates!.sortedArrayUsingDescriptors([sortDescriptor]) as! [Event_Date]
         return sortedByDate
     }
     
     func hasEventDatesForChart()-> [String]{
+        sumMemberArray = [ ]
+        sumTrainerArray = [ ]
+        
         let sortDescriptor = NSSortDescriptor(key: "beginn", ascending: true,selector: #selector(NSDate.compare))
         let sortedByDate = self.eventHasDates!.sortedArrayUsingDescriptors([sortDescriptor]) as! [Event_Date]
         var stringForDate: [ String ] = [ ]

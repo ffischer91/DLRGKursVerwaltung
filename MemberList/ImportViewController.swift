@@ -66,10 +66,6 @@ class ImportViewController: UIViewController {
     // True == erfolgreich
     // false == kein Import möglich
     func importData()->Bool{
-      
- //       let csv = CSV(string: "id,name,age\n1,Alice,18\n2,Bob,19")
-//        let dataa = NSData(contentsOfFile: url!.path!)
-//        print(dataa)
         
         do {
             let csv = try CSV(url: url!, delimiter: ";", encoding: NSWindowsCP1254StringEncoding, loadColumns: true)
@@ -114,7 +110,7 @@ class ImportViewController: UIViewController {
                     bool_event = false
                     self.elementCounter += 1
                 }else if(i >= marker_event_date && bool_event_date){
-                    let date = Event_Date(event: event!, beginDate: data[1] , beginTime: data[2], endTime: data[3], insertIntoManagedObjectContext: self.managedObjectContext)
+                    _ = Event_Date(event: event!, beginDate: data[1] , beginTime: data[2], endTime: data[3], insertIntoManagedObjectContext: self.managedObjectContext)
                     self.elementCounter += 1
 
                     
