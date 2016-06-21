@@ -9,6 +9,12 @@
 import UIKit
 import CoreData
 
+struct CSVURL{
+    static let Notification = "CSV Radio Station"
+    static let Key = "CSVURL Key"
+}
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControllerDelegate{
 
@@ -19,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControlle
     //managedObjectContext = AppDelegate.
     //(UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        let center = NSNotificationCenter.defaultCenter()
+        let notification = NSNotification(name: CSVURL.Notification , object: self, userInfo: [CSVURL.Key:url])
+        center.postNotification(notification)
+        return true
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

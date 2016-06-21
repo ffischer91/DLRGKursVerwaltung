@@ -14,6 +14,7 @@
         <relationship name="hasTrainer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trainer" inverseName="hasEvent_Date" inverseEntity="Trainer" syncable="YES"/>
     </entity>
     <entity name="Member" representedClassName=".Member" syncable="YES">
+        <attribute name="birth" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dlrg" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
@@ -34,7 +35,7 @@
     <elements>
         <element name="Event" positionX="133" positionY="-147" width="128" height="103"/>
         <element name="Event_Date" positionX="313" positionY="-72" width="128" height="118"/>
-        <element name="Member" positionX="-83" positionY="-144" width="128" height="193"/>
+        <element name="Member" positionX="-83" positionY="-144" width="128" height="208"/>
         <element name="Trainer" positionX="466" positionY="-58" width="128" height="103"/>
     </elements>
 </model>

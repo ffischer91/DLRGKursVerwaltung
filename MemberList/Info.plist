@@ -4,6 +4,20 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
+			<key>CFBundleTypeName</key>
+			<string>CSV File</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>spp.MemberList.csv</string>
+			</array>
+		</dict>
+		<dict/>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -42,6 +56,39 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>.csv</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>CSV File</string>
+			<key>UTTypeIdentifier</key>
+			<string>veranstaltung_exp.csv</string>
+		</dict>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>CSV File</string>
+			<key>UTTypeIdentifier</key>
+			<string>spp.MemberList.csv</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>csv</string>
+				<key>public.mime-type</key>
+				<string>application/csv</string>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>

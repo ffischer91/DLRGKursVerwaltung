@@ -2,7 +2,7 @@
 //  Member+CoreDataProperties.swift
 //  MemberList
 //
-//  Created by flo on 19.06.16.
+//  Created by flo on 20.06.16.
 //  Copyright © 2016 flo. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -22,7 +22,8 @@ extension Member {
     @NSManaged var plz: String?
     @NSManaged var street: String?
     @NSManaged var surname: String?
-    @NSManaged var hasEvents: NSSet?
+    @NSManaged var birth: NSDate?
     @NSManaged var hasEvent_Date: NSSet?
+    @NSManaged var hasEvents: NSSet?
 
 }

@@ -1,0 +1,15 @@
+PODS:
+  - FileBrowser (0.1.4)
+  - SwiftCSV (0.3.2)
+
+DEPENDENCIES:
+  - FileBrowser (~> 0.1)
+  - SwiftCSV
+
+SPEC CHECKSUMS:
+  FileBrowser: 4e48c118606571cf59fd1d20930ac41887c026d0
+  SwiftCSV: 8b64b738fc54567d229acb17ce6d584e0dd27560
+
+PODFILE CHECKSUM: 8816a7c7c967a491a0c2f94ed911a67da2fec557
+
+COCOAPODS: 1.0.1

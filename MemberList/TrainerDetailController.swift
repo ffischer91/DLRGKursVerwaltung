@@ -16,6 +16,7 @@ class TrainerDetailController: UITableViewController {
     var trainer_EventDates : [Event_Date] = [ ]
     var eventDateCount = 0
     
+    
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
