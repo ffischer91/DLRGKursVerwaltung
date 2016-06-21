@@ -31,6 +31,11 @@ class EDMemberTableCell: UITableViewCell {
     
     @IBOutlet weak var switch_Member: UISwitch!
     
+    
+    @IBAction func switch_Member_Changed(sender: AnyObject) {
+        self.delegate?.switchChanged_Member(self)
+    }
+    
     func setData(){
         switch_Member.on = false
         if(member != nil){

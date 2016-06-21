@@ -21,7 +21,8 @@ class Event: NSManagedObject {
         self.location = location
     }
     
-    
+    var sumMemberArray: [ Double ] = [ ]
+    var sumTrainerArray: [ Double ] = [ ]
     
     func addEvent_Date(newValue: Event_Date) {
         let set = self.eventHasDates                    //NSSet
@@ -50,6 +51,28 @@ class Event: NSManagedObject {
         let sortDescriptor = NSSortDescriptor(key: "beginn", ascending: true,selector: #selector(NSDate.compare))//NSString.localizedStandardCompare))
         let sortedByDate = self.eventHasDates!.sortedArrayUsingDescriptors([sortDescriptor]) as! [Event_Date]
         return sortedByDate
+    }
+    
+    func hasEventDatesForChart()-> [String]{
+        let sortDescriptor = NSSortDescriptor(key: "beginn", ascending: true,selector: #selector(NSDate.compare))
+        let sortedByDate = self.eventHasDates!.sortedArrayUsingDescriptors([sortDescriptor]) as! [Event_Date]
+        var stringForDate: [ String ] = [ ]
+        
+        for i in 0 ..< sortedByDate.count
+        {
+            stringForDate.append(sortedByDate[i].beginn!.date_toString_Date())
+            if(sortedByDate[i].hasTrainer != nil){
+                let sumTrainer = Double(sortedByDate[i].hasTrainer!.count)
+                sumTrainerArray.append(sumTrainer)
+                print(sumTrainer)
+            }
+            if(sortedByDate[i].hasMember != nil){
+                let sumMember = Double(sortedByDate[i].hasMember!.count)
+                sumMemberArray.append(sumMember)
+                print(sumMember)
+            }
+        }
+        return stringForDate
     }
 }
 

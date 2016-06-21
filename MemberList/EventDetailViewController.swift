@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Charts
 
 class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CellSwichChangedProtocol, UIPopoverPresentationControllerDelegate, SwichChanged_Member{
 
@@ -61,6 +62,8 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         }else{
             hideFields(true)
         }
+        
+        
     }
     
     func hideFields(hide: Bool){
@@ -222,11 +225,22 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             label_AusbilderDate.text = dateFormatter.stringFromDate(eventDates[0].beginn!)
             let eDA = eventDates[ 0 ]
             eventDatePicker = eDA
+            
+            //Chart
+            let chart_dates = event!.hasEventDatesForChart()
+            let countTeilnehmer = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0]
+            print (countTeilnehmer.count)
+            
+            setChartBarGroupDataSet(chart_dates, values: event!.sumTrainerArray , values2: event!.sumMemberArray)
+            
         }else{
             label_AusbilderDate.text = ""
             label_TeilnehmerDate.text = ""
             
         }
+        
+        
+        
     }
     
     //MARK: DateTable
@@ -307,6 +321,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             
             var memberArray = event!.hasMembersAsArray()
             cell.member = memberArray[ indexPath.row ]
+            cell.delegate = self
             cell.setData()
             if (cell.member!.hasEvent_Date?.count > 0 && eventDatePickerMember != nil){
                 if(cell.member!.hasEvent_Date!.containsObject(eventDatePickerMember!)){
@@ -314,7 +329,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
                 }
             }
             
-            cell.delegate = self
+            
             return cell
             
         }
@@ -405,10 +420,80 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             member!.removeEvent_Date(eventDatePickerMember!)
             updateEvent()
         }
-        print("von Drüben aufgerufen")
     }
     
+    //MARK: Bar Chart
+    
+    @IBOutlet weak var barChartView: BarChartView!
+    
 
+    func setChart(dataPoints: [String], values: [Double]) {
+        barChartView.noDataText = "You need to provide data for the chart."
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            //let dataEntry = BarChartDataEntry(values: values[i], xIndex: i, label: "terst") //(values: [Double], xIndex: i, label: "test")
+            dataEntries.append(dataEntry)
+        }
+        
+        
+        
+        let chartDataSet1 = BarChartDataSet(yVals: dataEntries, label: "Teilnehmer")
+
+        
+        let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet1)
+        barChartView.data = chartData
+
+        chartDataSet1.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
+    }
+    
+    func setChartBarGroupDataSet(dataPoints: [String], values: [Double], values2: [Double]) {
+        
+        var dataEntries: [BarChartDataEntry] = []
+        var dataEntries2: [BarChartDataEntry] = []
+        
+        
+        for i in 0..<dataPoints.count {
+            
+            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        
+        for i in 0..<dataPoints.count {
+            
+            let dataEntry = BarChartDataEntry(value: values2[i], xIndex: i)
+            dataEntries2.append(dataEntry)
+        }
+        
+        
+        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: Constants.Ausbilder)
+        let chartDataSet2 = BarChartDataSet(yVals: dataEntries2, label: Constants.Teilnehmer)
+        
+        chartDataSet2.colors =  [UIColor(red: 255/255, green: 70/255, blue: 108/255, alpha: 1)]
+        
+        chartDataSet.colors =  [UIColor(red: 49/255, green: 27/255, blue: 146/255, alpha: 1)]
+        
+        
+        let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet2]
+        
+        let data = BarChartData(xVals: dataPoints, dataSets: dataSets)
+        
+        barChartView.data = data
+        
+        barChartView.descriptionText = ""
+        
+        
+        barChartView.rightAxis.drawGridLinesEnabled = false
+        barChartView.rightAxis.drawAxisLineEnabled = false
+        barChartView.rightAxis.drawLabelsEnabled = false
+        
+        
+        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInBounce)
+        
+        
+    }
     
     //MARK: Update Data
     

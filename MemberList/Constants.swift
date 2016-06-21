@@ -32,17 +32,15 @@ public struct Constants {
     static let ShowNewEvent = "Show New Event"
     static let ShowEventHeader = "Show Event Header"
     
-    static let Cell_Allgemein = 0
-    static let ShowDetailEventAllgemein = "Show Detail Event Allgemein"
-    static let Cell_Termine = 1
-    static let ShowDetailEventTermin = "Show Detail Event Termin"
-    static let Cell_Teilnehmer = 2
-    static let Cell_Helfer = 3
+//    static let Cell_Allgemein = 0
+//    static let ShowDetailEventAllgemein = "Show Detail Event Allgemein"
+//    static let Cell_Termine = 1
+//    static let ShowDetailEventTermin = "Show Detail Event Termin"
+//    static let Cell_Teilnehmer = 2
+//    static let Cell_Helfer = 3
     
     static let ShowEDMemberPopover = "Show Member Popover"
-    
-    
-    
+
     static let EntityMember = "Member"
     static let EntityTrainer = "Trainer"
     static let EntityEvent = "Event"
@@ -54,4 +52,7 @@ public struct Constants {
     static let ShowDetailTrainerSegue = "Show Detail Trainer"
     static let CellTrainerDetailTextField = "TDTextfieldCell"
     static let CellTrainerDetailEventTab = "TDEventTabCell"
+    
+    static let Ausbilder = "Ausbilder"
+    static let Teilnehmer = "Teilnehmer"
 }
