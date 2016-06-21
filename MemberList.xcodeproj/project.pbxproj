@@ -26,7 +26,6 @@
 		5C57F64C1D09F49100847D67 /* TrainerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57F64B1D09F49100847D67 /* TrainerDetailController.swift */; };
 		5C57F64F1D09F51100847D67 /* TrainerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57F64E1D09F51100847D67 /* TrainerTableViewController.swift */; };
 		5C57F6511D0A001600847D67 /* TrainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57F6501D0A001600847D67 /* TrainerTableViewCell.swift */; };
-		5C617D031D03225B00493B29 /* EventGeneralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C617D021D03225B00493B29 /* EventGeneralController.swift */; };
 		5C6297761D1919A700C11D28 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6297751D1919A700C11D28 /* TabBarController.swift */; };
 		5C62979A1D197EC300C11D28 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6297931D197EB000C11D28 /* Charts.framework */; };
 		5C62979B1D197EC300C11D28 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6297931D197EB000C11D28 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -47,7 +46,6 @@
 		5CDABA161D0600F4002115DA /* MDTextfieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA151D0600F4002115DA /* MDTextfieldCell.swift */; };
 		5CDABA1A1D0605D2002115DA /* MDSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA191D0605D2002115DA /* MDSwitchCell.swift */; };
 		5CDABA1C1D0605ED002115DA /* MDPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDABA1B1D0605ED002115DA /* MDPhotoCell.swift */; };
-		5CF28E401D12F078002CB997 /* EventTableHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF28E3F1D12F078002CB997 /* EventTableHeaderController.swift */; };
 		5CF28E421D12F9A2002CB997 /* EventTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF28E411D12F9A2002CB997 /* EventTableController.swift */; };
 		7E562BA4AE0D46CA4CC75560 /* Pods_MemberList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2D7E0FE514EACF51B1E290 /* Pods_MemberList.framework */; };
 /* End PBXBuildFile section */
@@ -146,7 +144,6 @@
 		5C57F64B1D09F49100847D67 /* TrainerDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDetailController.swift; sourceTree = "<group>"; };
 		5C57F64E1D09F51100847D67 /* TrainerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTableViewController.swift; sourceTree = "<group>"; };
 		5C57F6501D0A001600847D67 /* TrainerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTableViewCell.swift; sourceTree = "<group>"; };
-		5C617D021D03225B00493B29 /* EventGeneralController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventGeneralController.swift; sourceTree = "<group>"; };
 		5C6297751D1919A700C11D28 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5C62978B1D197EAF00C11D28 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../Downloads/Charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
 		5C70D52A1D0853B300D11E5B /* MDTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDTextViewCell.swift; sourceTree = "<group>"; };
@@ -166,7 +163,6 @@
 		5CDABA151D0600F4002115DA /* MDTextfieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDTextfieldCell.swift; sourceTree = "<group>"; };
 		5CDABA191D0605D2002115DA /* MDSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDSwitchCell.swift; sourceTree = "<group>"; };
 		5CDABA1B1D0605ED002115DA /* MDPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPhotoCell.swift; sourceTree = "<group>"; };
-		5CF28E3F1D12F078002CB997 /* EventTableHeaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableHeaderController.swift; sourceTree = "<group>"; };
 		5CF28E411D12F9A2002CB997 /* EventTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableController.swift; sourceTree = "<group>"; };
 		8A2D7E0FE514EACF51B1E290 /* Pods_MemberList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemberList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -301,8 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				5C179D0C1D00C5DD0041B306 /* EventDateController.swift */,
-				5CF28E3F1D12F078002CB997 /* EventTableHeaderController.swift */,
-				5C617D021D03225B00493B29 /* EventGeneralController.swift */,
 				5CF28E411D12F9A2002CB997 /* EventTableController.swift */,
 				5C50CFF71D147F710056937B /* EventDetailViewController.swift */,
 				5CBB50361D15D0F200969F02 /* EDTrainerTableCell.swift */,
@@ -615,7 +609,6 @@
 				5C15425E1CFDE6040044F295 /* AppDelegate.swift in Sources */,
 				5C3A67231D104C7B00E4C599 /* TDEventTabCell.swift in Sources */,
 				5C1542661CFDE6040044F295 /* MemberList.xcdatamodeld in Sources */,
-				5CF28E401D12F078002CB997 /* EventTableHeaderController.swift in Sources */,
 				5CBB50371D15D0F200969F02 /* EDTrainerTableCell.swift in Sources */,
 				5C3A67211D104BE300E4C599 /* TDTextfieldCell.swift in Sources */,
 				5CDABA161D0600F4002115DA /* MDTextfieldCell.swift in Sources */,
@@ -628,7 +621,6 @@
 				5C0478421CFF455E00BCD6FA /* Constants.swift in Sources */,
 				5C57F6511D0A001600847D67 /* TrainerTableViewCell.swift in Sources */,
 				5C70D5381D08630E00D11E5B /* Event.swift in Sources */,
-				5C617D031D03225B00493B29 /* EventGeneralController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
