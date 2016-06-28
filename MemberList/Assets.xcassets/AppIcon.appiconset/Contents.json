@@ -46,27 +46,23 @@
       "scale" : "1x"
     },
     {
-      "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "seepferd_80.png",
+      "size" : "40x40",
       "scale" : "2x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "Seepferdchen.png",
+      "size" : "76x76",
       "scale" : "1x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "seepferd_1520.png",
+      "size" : "76x76",
       "scale" : "2x"
     },
     {
-      "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "seepferd_835.png",
+      "size" : "83.5x83.5",
       "scale" : "2x"
     }
   ],

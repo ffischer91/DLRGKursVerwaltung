@@ -30,9 +30,8 @@ class ImportViewController: UIViewController {
         
     }
     
-    @IBOutlet weak var btn_import: UIButton!
     @IBAction func btn_import_action(sender: AnyObject) {
-        //print("IMPORT")
+        print("IMPORT")
         importData()
     }
 
@@ -41,23 +40,19 @@ class ImportViewController: UIViewController {
         didSet {
             if(textView != nil){
                 self.textView.text = "File to import: \n\n \(self.url!)"
-                let image = UIImage(named: "import")
-                btn_import.setImage(image, forState: .Normal)
             }
         }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //self.textView.scrollRangeToVisible(NSRange(location:0, length:0)) //funktioniert nitch
-        self.textView.scrollsToTop = true       // funktioniert auch nicht
+        //self.textView.scrollRangeToVisible(NSRange(location:0, length:0))
+        self.textView.scrollsToTop = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
          self.title = "Import"
-        let image = UIImage(named: "import")
-        btn_import.setImage(image, forState: .Normal)
         if(url != nil){
             self.textView.text = "Received: \n\n \(self.url!)"
         }
@@ -144,10 +139,8 @@ class ImportViewController: UIViewController {
     func updateData(){
         do {
             try managedObjectContext.save()
+            //print(" Import..., saved finished ")
             self.textView.text.appendContentsOf("\n Import erfolgreich: \n\n insgesamt \(self.elementCounter) Elemente importiert!")
-            let image = UIImage(named: "hacken")
-            btn_import.setImage(image, forState: .Normal)
-            
             
         } catch let error as NSError{
             print("Could not save \(error), \(error.userInfo)")
