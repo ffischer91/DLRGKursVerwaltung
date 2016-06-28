@@ -68,6 +68,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     
     func hideFields(hide: Bool){
         btn_addMember.hidden = hide
+        btn_addDate.hidden = hide
         label_AusbilderDate.hidden = hide
         label_AusbilderDate.hidden = hide
         stepper_Ausbilder.hidden = hide
@@ -105,7 +106,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     @IBOutlet weak var viewAusbilder: UIView!
     @IBOutlet weak var viewTeilnehmer: UIView!
     
-
+//MARK: Segment Action
     // Jeweiligen View einblenden
     @IBAction func segmentChange(sender: AnyObject)
     {
@@ -143,16 +144,11 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     @IBOutlet weak var dP_end: UIDatePicker!
     
     
-    //MARK: Button Add Datum
+//MARK: Button Add Datum
+    
+    @IBOutlet weak var btn_addDate: UIButton!
+    
     @IBAction func btn_addDate(sender: AnyObject) {
-//        var date = dP_begin.date
-//        //dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
-//
-//        let beginString = dateFormatter.stringFromDate(date)
-//        date = dP_end.date
-//        let endString = dateFormatter.stringFromDate(date)
-//        print(beginString)
-//        print(endString)
         
         selectedEvent_Date = Event_Date(event: event!, begin: dP_begin.date, end: dP_end.date, insertIntoManagedObjectContext: managedObjectContext)
         updateEvent()   // evtl. event == nil
@@ -162,12 +158,12 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         tableView.reloadData()
     }
     
-    //MARK: Button Add Teilnehmer
+//MARK: Button Add Teilnehmer
     
     @IBOutlet weak var btn_addMember: UIButton!
     
     
-    //MARK: Textfield
+//MARK: Textfield
     func textFieldDidEndEditing(textField: UITextField) {
         updateEvent()
     }
@@ -177,7 +173,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     
-    // MARK: Date Picker Ausbilder
+// MARK: Date Picker Ausbilder
     @IBOutlet weak var label_AusbilderDate: UILabel!
     @IBOutlet weak var stepper_Ausbilder: UIStepper!
     
@@ -190,7 +186,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     
-    // MARK: Date Picker Teilnehmer
+// MARK: Date Picker Teilnehmer
     @IBOutlet weak var label_TeilnehmerDate: UILabel!
     @IBOutlet weak var stepper_Teilnehmer: UIStepper!
     
@@ -202,40 +198,9 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         }
     }
     
-    func setDataToView(){
-        tF_name.text = event!.name
-        tf_location.text = event!.location
-        
-        //eventDates = event!.eventHasDates!.allObjects as! [Event_Date]
-        eventDates = event!.hasEventDatesAsArray()
-        stepper_Ausbilder.minimumValue = 0.0
-        stepper_Ausbilder.maximumValue = Double(eventDates.count - 1)
-        stepper_Ausbilder.stepValue = 1.0
-        // Stepper Tab Teilnehmer
-        stepper_Teilnehmer.minimumValue = 0.0
-        stepper_Teilnehmer.maximumValue = Double(eventDates.count - 1)
-        stepper_Teilnehmer.stepValue = 1.0
-        
-        
-        if(eventDates.count > 0){
-            // Tab Member
-            label_TeilnehmerDate.text = dateFormatter.stringFromDate(eventDates[0].beginn!)
-            let eDM = eventDates[ 0 ]
-            eventDatePickerMember = eDM
-            // Tab Ausbilder
-            label_AusbilderDate.text = dateFormatter.stringFromDate(eventDates[0].beginn!)
-            let eDA = eventDates[ 0 ]
-            eventDatePicker = eDA
-            //Chart
-            self.refreshChart()
-        }else{
-            label_AusbilderDate.text = ""
-            label_TeilnehmerDate.text = ""
-            
-        }
-    }
     
-    //MARK: DateTable
+    
+//MARK: DateTable
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -332,7 +297,6 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if(tableView == self.tableView){
-            //print("Event Count: \(eventDates.count)")
             selectedEvent_Date = eventDates[indexPath.row]
             //print(selectedEvent_Date)
             event!.removeEvent_Date(selectedEvent_Date!)
@@ -350,7 +314,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         }
     }
 
-    //MARK: Trainer Table
+//MARK: Trainer Table
     
     @IBOutlet weak var trainerTableView: UITableView!
     
@@ -360,10 +324,8 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         
         if (sender.switch_present.on){                      //JA, Switch on
             trainer!.addEvent_Date(eventDatePicker!)        // füge Datum hinzu
-            //updateEvent()
         }else{                                              //Switch of
             trainer!.removeEvent_Date(eventDatePicker!)     // entferne Datum
-            //updateEvent()                                   //speichern
         }
         updateEvent()   // speichern
     }
@@ -406,18 +368,19 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         memberTableView.reloadData()
     }
-
     
+    // wenn der Schalter in der Cell des Members geändert wurde -> Event_Date updaten
     func switchChanged_Member(sender: EDMemberTableCell ){  // wird von Celle aus aufgerufen
         member = sender.member
         
         if (sender.switch_Member.on){  //JA
             member!.addEvent_Date(eventDatePickerMember!)       // Datum zu Member hinzufügen
-            updateEvent()                                       // speichern
+            //updateEvent()                                       // speichern
         }else{                  //NEIN
             member!.removeEvent_Date(eventDatePickerMember!)       // Datum entfernen
-            updateEvent()                                           // speichern
+            //updateEvent()                                           // speichern
         }
+        updateEvent()   //speichern
     }
     
     
@@ -512,9 +475,10 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         refreshChart()
         do {
             try managedObjectContext.save()
-            print("updateEvent(), saved finished \(event)")
+            //print("updateEvent(), saved finished \(event)")
         } catch let error as NSError{
-            print("Could not save \(error), \(error.userInfo)")
+            //print("Could not save Event \(error), \(error.userInfo)")
+            NSLog("Could not save Event\(error), \(error.userInfo)")
         }
     }
 
@@ -522,6 +486,40 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     func getDataFromView(){
         event?.name = tF_name.text
         event?.location = tf_location.text
+    }
+    
+    func setDataToView(){
+        tF_name.text = event!.name
+        tf_location.text = event!.location
+        
+        eventDates = event!.hasEventDatesAsArray()
+        //Stepper Tab Ausbilder
+        stepper_Ausbilder.minimumValue = 0.0
+        stepper_Ausbilder.maximumValue = Double(eventDates.count - 1)
+        stepper_Ausbilder.stepValue = 1.0
+        
+        // Stepper Tab Teilnehmer
+        stepper_Teilnehmer.minimumValue = 0.0
+        stepper_Teilnehmer.maximumValue = Double(eventDates.count - 1)
+        stepper_Teilnehmer.stepValue = 1.0
+        
+        
+        if(eventDates.count > 0){
+            // Tab Member
+            label_TeilnehmerDate.text = dateFormatter.stringFromDate(eventDates[0].beginn!)
+            let eDM = eventDates[ 0 ]
+            eventDatePickerMember = eDM
+            // Tab Ausbilder
+            label_AusbilderDate.text = dateFormatter.stringFromDate(eventDates[0].beginn!)
+            let eDA = eventDates[ 0 ]
+            eventDatePicker = eDA
+            //Chart, Tab Allgemien
+            self.refreshChart()
+        }else{
+            label_AusbilderDate.text = ""
+            label_TeilnehmerDate.text = ""
+            
+        }
     }
     
 }

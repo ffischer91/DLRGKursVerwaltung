@@ -78,9 +78,9 @@ class EDMemberPopupCell: UITableViewCell {
     func updateDB(){
         do {
             try managedObjectContext.save()
-            print("update a Member(), saved finished \(event)")
+            //print("update a Member(), saved finished \(event)")
         } catch let error as NSError{
-            print("Could not save \(error), \(error.userInfo)")
+            NSLog("Could not save \(error), \(error.userInfo)")
         }
     }
 }

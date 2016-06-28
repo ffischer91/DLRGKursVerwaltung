@@ -32,11 +32,11 @@ class MDPhotoCell: UITableViewCell , Reusable, UIAlertViewDelegate, UIPopoverCon
             picker.delegate = self
             picker.allowsEditing = true
             delegate?.loadNewScreen(picker);
-            //self.presentViewController(picker, animated: true, completion: nil)
+            
         }
         else
         {
-            print("no Camera ")
+            //print("no Camera ")
             //Create the AlertController
             let actionSheetController: UIAlertController = UIAlertController(title: "Warning", message: "no Camera on this device", preferredStyle: .Alert)
             
@@ -58,7 +58,7 @@ class MDPhotoCell: UITableViewCell , Reusable, UIAlertViewDelegate, UIPopoverCon
             
             //Present the AlertController
             delegate?.loadNewScreen(actionSheetController)
-           // self.presentViewController(actionSheetController, animated: true, completion: nil)
+           //self.presentViewController(actionSheetController, animated: true, completion: nil)
         }
     }
     
@@ -89,7 +89,7 @@ class MDPhotoCell: UITableViewCell , Reusable, UIAlertViewDelegate, UIPopoverCon
         photo!.image = my_image
         imageIsNew = true
         picker.dismissViewControllerAnimated(true, completion: nil)
-        print("imagePickerController.didFinishPickingMediaWithInfo.")
+        //print("imagePickerController.didFinishPickingMediaWithInfo.")
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

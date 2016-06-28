@@ -66,7 +66,6 @@ class EDMemberPopoverController: UITableViewController, NSFetchedResultsControll
         
         let fetchRequest = NSFetchRequest(entityName: Constants.EntityMember)
         let primarySortDescriptor = NSSortDescriptor(key: "surname", ascending: true)
-        //let secondarySortDescriptor = NSSortDescriptor(key: "classification.order", ascending: true)
         fetchRequest.sortDescriptors = [primarySortDescriptor]
         
         return fetchRequest
