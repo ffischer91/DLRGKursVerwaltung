@@ -53,6 +53,7 @@ public struct Constants {
     static let HeaderSecEventsMember = "Eingetragene Veranstaltungen"
     static let Default = "Default"
     static let NoDataForChart =  "keine Daten für das Diagramm"
+    static let NOEventDates = "keine Termine zu dieser Veranstaltung"
     
     static let MAX_CELLS_MEMBER = 8
     

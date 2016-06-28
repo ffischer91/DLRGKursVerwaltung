@@ -15,7 +15,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     var event: Event?
     var selectedEvent_Date: Event_Date?
     var eventDates: [ Event_Date] = [ ]
-   // var eventDates_Set : NSSet?
+   
     let dateFormatter = NSDateFormatter()
     
     var trainer: Trainer?
@@ -70,7 +70,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         btn_addMember.hidden = hide
         btn_addDate.hidden = hide
         label_AusbilderDate.hidden = hide
-        label_AusbilderDate.hidden = hide
+        label_TeilnehmerDate.hidden = hide
         stepper_Ausbilder.hidden = hide
         stepper_Teilnehmer.hidden = hide
     }
@@ -80,7 +80,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         self.memberTableView.delegate = self
         self.memberTableView.dataSource = self
         self.memberTableView.allowsSelection = false
-        //self.memberTableView.reloadData()
+        
         
         // Trainer Table View
         self.trainerTableView.delegate = self
@@ -475,6 +475,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         refreshChart()
         do {
             try managedObjectContext.save()
+            setDataToView()
             //print("updateEvent(), saved finished \(event)")
         } catch let error as NSError{
             //print("Could not save Event \(error), \(error.userInfo)")
@@ -516,8 +517,8 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             //Chart, Tab Allgemien
             self.refreshChart()
         }else{
-            label_AusbilderDate.text = ""
-            label_TeilnehmerDate.text = ""
+            label_AusbilderDate.text = Constants.NOEventDates
+            label_TeilnehmerDate.text = Constants.NOEventDates
             
         }
     }
