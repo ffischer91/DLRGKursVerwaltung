@@ -985,6 +985,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btn_add" destination="OMG-dC-i3d" id="UyG-Bv-83I"/>
+                        <outlet property="btn_import" destination="sG6-5v-IEb" id="7UT-1Y-TwK"/>
                         <outlet property="textView" destination="3C2-jE-hTy" id="WGb-gp-PTp"/>
                     </connections>
                 </viewController>

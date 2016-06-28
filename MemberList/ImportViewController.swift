@@ -24,14 +24,15 @@ class ImportViewController: UIViewController {
         let fileBrowser = FileBrowser()
         self.presentViewController(fileBrowser, animated: true, completion: nil)
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
-            print(file.filePath)
+            //print(file.filePath)
             self.url =  file.filePath
         }
         
     }
     
+    @IBOutlet weak var btn_import: UIButton!
     @IBAction func btn_import_action(sender: AnyObject) {
-        print("IMPORT")
+        //print("IMPORT")
         importData()
     }
 
@@ -40,6 +41,8 @@ class ImportViewController: UIViewController {
         didSet {
             if(textView != nil){
                 self.textView.text = "File to import: \n\n \(self.url!)"
+                let image = UIImage(named: "import")
+                btn_import.setImage(image, forState: .Normal)
             }
         }
     }
@@ -141,9 +144,10 @@ class ImportViewController: UIViewController {
             try managedObjectContext.save()
             //print(" Import..., saved finished ")
             self.textView.text.appendContentsOf("\n Import erfolgreich: \n\n insgesamt \(self.elementCounter) Elemente importiert!")
-            
+            let image = UIImage(named: "hacken")
+            btn_import.setImage(image, forState: .Normal)
         } catch let error as NSError{
-            print("Could not save \(error), \(error.userInfo)")
+            NSLog("Could not save \(error), \(error.userInfo)")
         }
     }
     
