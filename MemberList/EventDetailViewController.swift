@@ -475,7 +475,6 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         refreshChart()
         do {
             try managedObjectContext.save()
-            setDataToView()
             //print("updateEvent(), saved finished \(event)")
         } catch let error as NSError{
             //print("Could not save Event \(error), \(error.userInfo)")
