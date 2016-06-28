@@ -232,6 +232,7 @@ class MemberDetailTabViewController: UITableViewController, UITextFieldDelegate,
                     }
                 }else{  // default Bild
                     cellPhoto.photo.image = UIImage(named: "person_swim")
+                    editMember()
                 }
             case 6:
                 let cellSwitch = cells[ i ] as! MDSwitchCell

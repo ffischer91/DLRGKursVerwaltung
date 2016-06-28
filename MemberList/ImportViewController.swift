@@ -49,8 +49,8 @@ class ImportViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //self.textView.scrollRangeToVisible(NSRange(location:0, length:0))
-        self.textView.scrollsToTop = true
+        //self.textView.scrollRangeToVisible(NSRange(location:0, length:0))     // funkt nicht
+        self.textView.scrollsToTop = true   // funkt auch nicht
     }
     
     override func viewDidLoad() {
