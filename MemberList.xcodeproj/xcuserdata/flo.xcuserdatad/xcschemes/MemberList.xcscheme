@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5C1542591CFDE6030044F295"
-               BuildableName = "MemberList.app"
+               BuildableName = "DLRG Events.app"
                BlueprintName = "MemberList"
                ReferencedContainer = "container:MemberList.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5C1542591CFDE6030044F295"
-            BuildableName = "MemberList.app"
+            BuildableName = "DLRG Events.app"
             BlueprintName = "MemberList"
             ReferencedContainer = "container:MemberList.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5C1542591CFDE6030044F295"
-            BuildableName = "MemberList.app"
+            BuildableName = "DLRG Events.app"
             BlueprintName = "MemberList"
             ReferencedContainer = "container:MemberList.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5C1542591CFDE6030044F295"
-            BuildableName = "MemberList.app"
+            BuildableName = "DLRG Events.app"
             BlueprintName = "MemberList"
             ReferencedContainer = "container:MemberList.xcodeproj">
          </BuildableReference>
