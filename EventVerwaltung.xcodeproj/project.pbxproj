@@ -126,10 +126,10 @@
 		5C1542671CFDE6040044F295 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C15426A1CFDE6040044F295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C15426C1CFDE6040044F295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C1542711CFDE6040044F295 /* MemberListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemberListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1542711CFDE6040044F295 /* EventVerwaltungTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventVerwaltungTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C1542751CFDE6040044F295 /* MemberListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTests.swift; sourceTree = "<group>"; };
 		5C1542771CFDE6040044F295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C15427C1CFDE6040044F295 /* MemberListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemberListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C15427C1CFDE6040044F295 /* EventVerwaltungTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventVerwaltungTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C1542801CFDE6040044F295 /* MemberListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListUITests.swift; sourceTree = "<group>"; };
 		5C1542821CFDE6040044F295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C1542941CFE13D20044F295 /* Member+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -212,9 +212,9 @@
 		5C1542511CFDE6030044F295 = {
 			isa = PBXGroup;
 			children = (
-				5C15425C1CFDE6040044F295 /* MemberList */,
-				5C1542741CFDE6040044F295 /* MemberListTests */,
-				5C15427F1CFDE6040044F295 /* MemberListUITests */,
+				5C15425C1CFDE6040044F295 /* EventVerwaltung */,
+				5C1542741CFDE6040044F295 /* EventVerwaltungTests */,
+				5C15427F1CFDE6040044F295 /* EventVerwaltungUITests */,
 				5C15425B1CFDE6030044F295 /* Products */,
 				23ADC8A32AF180CEC8F37CC4 /* Pods */,
 				39BD1ED1F953A11D9D82CB6E /* Frameworks */,
@@ -225,13 +225,13 @@
 			isa = PBXGroup;
 			children = (
 				5C15425A1CFDE6030044F295 /* DLRG Events.app */,
-				5C1542711CFDE6040044F295 /* MemberListTests.xctest */,
-				5C15427C1CFDE6040044F295 /* MemberListUITests.xctest */,
+				5C1542711CFDE6040044F295 /* EventVerwaltungTests.xctest */,
+				5C15427C1CFDE6040044F295 /* EventVerwaltungTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5C15425C1CFDE6040044F295 /* MemberList */ = {
+		5C15425C1CFDE6040044F295 /* EventVerwaltung */ = {
 			isa = PBXGroup;
 			children = (
 				5C6297741D19197500C11D28 /* TabBar */,
@@ -248,24 +248,27 @@
 				5C0478411CFF455E00BCD6FA /* Constants.swift */,
 				5C62978B1D197EAF00C11D28 /* Charts.xcodeproj */,
 			);
+			name = EventVerwaltung;
 			path = MemberList;
 			sourceTree = "<group>";
 		};
-		5C1542741CFDE6040044F295 /* MemberListTests */ = {
+		5C1542741CFDE6040044F295 /* EventVerwaltungTests */ = {
 			isa = PBXGroup;
 			children = (
 				5C1542751CFDE6040044F295 /* MemberListTests.swift */,
 				5C1542771CFDE6040044F295 /* Info.plist */,
 			);
+			name = EventVerwaltungTests;
 			path = MemberListTests;
 			sourceTree = "<group>";
 		};
-		5C15427F1CFDE6040044F295 /* MemberListUITests */ = {
+		5C15427F1CFDE6040044F295 /* EventVerwaltungUITests */ = {
 			isa = PBXGroup;
 			children = (
 				5C1542801CFDE6040044F295 /* MemberListUITests.swift */,
 				5C1542821CFDE6040044F295 /* Info.plist */,
 			);
+			name = EventVerwaltungUITests;
 			path = MemberListUITests;
 			sourceTree = "<group>";
 		};
@@ -363,9 +366,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5C1542591CFDE6030044F295 /* MemberList */ = {
+		5C1542591CFDE6030044F295 /* EventVerwaltung */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C1542851CFDE6040044F295 /* Build configuration list for PBXNativeTarget "MemberList" */;
+			buildConfigurationList = 5C1542851CFDE6040044F295 /* Build configuration list for PBXNativeTarget "EventVerwaltung" */;
 			buildPhases = (
 				ADB6386764F09EB93E5DA919 /* [CP] Check Pods Manifest.lock */,
 				5C1542561CFDE6030044F295 /* Sources */,
@@ -380,14 +383,14 @@
 			dependencies = (
 				5C62979D1D197EC300C11D28 /* PBXTargetDependency */,
 			);
-			name = MemberList;
+			name = EventVerwaltung;
 			productName = MemberList;
 			productReference = 5C15425A1CFDE6030044F295 /* DLRG Events.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5C1542701CFDE6040044F295 /* MemberListTests */ = {
+		5C1542701CFDE6040044F295 /* EventVerwaltungTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C1542881CFDE6040044F295 /* Build configuration list for PBXNativeTarget "MemberListTests" */;
+			buildConfigurationList = 5C1542881CFDE6040044F295 /* Build configuration list for PBXNativeTarget "EventVerwaltungTests" */;
 			buildPhases = (
 				5C15426D1CFDE6040044F295 /* Sources */,
 				5C15426E1CFDE6040044F295 /* Frameworks */,
@@ -398,14 +401,14 @@
 			dependencies = (
 				5C1542731CFDE6040044F295 /* PBXTargetDependency */,
 			);
-			name = MemberListTests;
+			name = EventVerwaltungTests;
 			productName = MemberListTests;
-			productReference = 5C1542711CFDE6040044F295 /* MemberListTests.xctest */;
+			productReference = 5C1542711CFDE6040044F295 /* EventVerwaltungTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5C15427B1CFDE6040044F295 /* MemberListUITests */ = {
+		5C15427B1CFDE6040044F295 /* EventVerwaltungUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C15428B1CFDE6040044F295 /* Build configuration list for PBXNativeTarget "MemberListUITests" */;
+			buildConfigurationList = 5C15428B1CFDE6040044F295 /* Build configuration list for PBXNativeTarget "EventVerwaltungUITests" */;
 			buildPhases = (
 				5C1542781CFDE6040044F295 /* Sources */,
 				5C1542791CFDE6040044F295 /* Frameworks */,
@@ -416,9 +419,9 @@
 			dependencies = (
 				5C15427E1CFDE6040044F295 /* PBXTargetDependency */,
 			);
-			name = MemberListUITests;
+			name = EventVerwaltungUITests;
 			productName = MemberListUITests;
-			productReference = 5C15427C1CFDE6040044F295 /* MemberListUITests.xctest */;
+			productReference = 5C15427C1CFDE6040044F295 /* EventVerwaltungTests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -448,7 +451,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5C1542551CFDE6030044F295 /* Build configuration list for PBXProject "MemberList" */;
+			buildConfigurationList = 5C1542551CFDE6030044F295 /* Build configuration list for PBXProject "EventVerwaltung" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -467,9 +470,9 @@
 			);
 			projectRoot = "";
 			targets = (
-				5C1542591CFDE6030044F295 /* MemberList */,
-				5C1542701CFDE6040044F295 /* MemberListTests */,
-				5C15427B1CFDE6040044F295 /* MemberListUITests */,
+				5C1542591CFDE6030044F295 /* EventVerwaltung */,
+				5C1542701CFDE6040044F295 /* EventVerwaltungTests */,
+				5C15427B1CFDE6040044F295 /* EventVerwaltungUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -641,12 +644,12 @@
 /* Begin PBXTargetDependency section */
 		5C1542731CFDE6040044F295 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5C1542591CFDE6030044F295 /* MemberList */;
+			target = 5C1542591CFDE6030044F295 /* EventVerwaltung */;
 			targetProxy = 5C1542721CFDE6040044F295 /* PBXContainerItemProxy */;
 		};
 		5C15427E1CFDE6040044F295 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5C1542591CFDE6030044F295 /* MemberList */;
+			target = 5C1542591CFDE6030044F295 /* EventVerwaltung */;
 			targetProxy = 5C15427D1CFDE6040044F295 /* PBXContainerItemProxy */;
 		};
 		5C62979D1D197EC300C11D28 /* PBXTargetDependency */ = {
@@ -771,7 +774,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MemberList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = spp.MemberList;
+				PRODUCT_BUNDLE_IDENTIFIER = spp.EventVerwaltung;
 				PRODUCT_NAME = "DLRG Events";
 				PROVISIONING_PROFILE = "";
 			};
@@ -787,7 +790,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MemberList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = spp.MemberList;
+				PRODUCT_BUNDLE_IDENTIFIER = spp.EventVerwaltung;
 				PRODUCT_NAME = "DLRG Events";
 				PROVISIONING_PROFILE = "";
 			};
@@ -800,7 +803,7 @@
 				INFOPLIST_FILE = MemberListTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = spp.MemberListTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EventVerwaltungTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MemberList.app/MemberList";
 			};
 			name = Debug;
@@ -812,7 +815,7 @@
 				INFOPLIST_FILE = MemberListTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = spp.MemberListTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EventVerwaltungTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MemberList.app/MemberList";
 			};
 			name = Release;
@@ -823,7 +826,7 @@
 				INFOPLIST_FILE = MemberListUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = spp.MemberListUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EventVerwaltungTests;
 				TEST_TARGET_NAME = MemberList;
 			};
 			name = Debug;
@@ -834,7 +837,7 @@
 				INFOPLIST_FILE = MemberListUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = spp.MemberListUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EventVerwaltungTests;
 				TEST_TARGET_NAME = MemberList;
 			};
 			name = Release;
@@ -842,7 +845,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5C1542551CFDE6030044F295 /* Build configuration list for PBXProject "MemberList" */ = {
+		5C1542551CFDE6030044F295 /* Build configuration list for PBXProject "EventVerwaltung" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C1542831CFDE6040044F295 /* Debug */,
@@ -851,7 +854,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C1542851CFDE6040044F295 /* Build configuration list for PBXNativeTarget "MemberList" */ = {
+		5C1542851CFDE6040044F295 /* Build configuration list for PBXNativeTarget "EventVerwaltung" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C1542861CFDE6040044F295 /* Debug */,
@@ -860,7 +863,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C1542881CFDE6040044F295 /* Build configuration list for PBXNativeTarget "MemberListTests" */ = {
+		5C1542881CFDE6040044F295 /* Build configuration list for PBXNativeTarget "EventVerwaltungTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C1542891CFDE6040044F295 /* Debug */,
@@ -869,7 +872,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C15428B1CFDE6040044F295 /* Build configuration list for PBXNativeTarget "MemberListUITests" */ = {
+		5C15428B1CFDE6040044F295 /* Build configuration list for PBXNativeTarget "EventVerwaltungUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C15428C1CFDE6040044F295 /* Debug */,

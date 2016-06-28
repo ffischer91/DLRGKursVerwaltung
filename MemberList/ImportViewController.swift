@@ -43,6 +43,7 @@ class ImportViewController: UIViewController {
                 self.textView.text = "File to import: \n\n \(self.url!)"
                 let image = UIImage(named: "import")
                 btn_import.setImage(image, forState: .Normal)
+                btn_import.hidden = false
             }
         }
     }
@@ -58,6 +59,10 @@ class ImportViewController: UIViewController {
          self.title = "Import"
         if(url != nil){
             self.textView.text = "Received: \n\n \(self.url!)"
+            btn_import.hidden = false
+        }
+        else{
+            btn_import.hidden = true
         }
     }
     
