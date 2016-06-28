@@ -13,8 +13,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
+        // Notification für CSV Import
         let center = NSNotificationCenter.defaultCenter()
         let queue = NSOperationQueue.mainQueue()
         let appDelegate = UIApplication.sharedApplication().delegate
@@ -24,7 +23,7 @@ class TabBarController: UITabBarController {
 
                 self.selectedIndex = 3      // Download Tab
                 let vc = self.selectedViewController!.contentViewController as! ImportViewController
-                vc.url = url        // Url setzen
+                vc.url = url            // Url setzen
             }
         }
     }
@@ -34,6 +33,7 @@ class TabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
 }
+
 
 extension UIViewController{
     var contentViewController : UIViewController {

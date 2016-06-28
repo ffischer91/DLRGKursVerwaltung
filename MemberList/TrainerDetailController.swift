@@ -28,9 +28,9 @@ class TrainerDetailController: UITableViewController {
          self.clearsSelectionOnViewWillAppear = false
 
         if(trainer != nil && trainer?.hasEvent_Date != nil){
-            let set = trainer!.hasEvent_Date                        //NSSet
+            let set = trainer!.hasEvent_Date                            //NSSet
             trainer_EventDates = set!.allObjects as! [Event_Date]      // Array
-            print(trainer_EventDates)
+            //print(trainer_EventDates)
             eventDateCount = trainer!.hasEvent_Date!.count
             //tableView.reloadData()
         }
@@ -57,7 +57,9 @@ class TrainerDetailController: UITableViewController {
     
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        // 2 Sections
+        // erste:   Trainer Details
+        // zweite:  Trainer Events
         return 2
     }
 
@@ -72,7 +74,6 @@ class TrainerDetailController: UITableViewController {
 //            tableView.reloadData()
             
             return eventDateCount
-            //return trainer!.hasEvent_Date!.count
         }
     }
     
