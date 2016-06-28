@@ -90,8 +90,8 @@ class TrainerTableViewController: UITableViewController, NSFetchedResultsControl
        // let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellTrainerInfo, forIndexPath: indexPath) as! TrainerTableViewCell
         let cell = tableView.dequeueReusableCell(indexPath: indexPath) as TrainerTableViewCell
         let trainer = fetchedResultController.objectAtIndexPath(indexPath) as! Trainer
-        cell.label_firstname.text = trainer.firstname
-        cell.label_surname.text = trainer.surname   
+        cell.label_firstname.text = trainer.firstname! + ", " + trainer.surname!
+        cell.label_surname.text = trainer.licenseID
         return cell
     }
     
@@ -108,6 +108,7 @@ class TrainerTableViewController: UITableViewController, NSFetchedResultsControl
         }
         
     }
+    
 
     
     //MARK: - Core Data

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -105,25 +106,31 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hF2-ar-MKO">
-                                            <rect key="frame" x="550" y="8" width="42" height="16"/>
+                                            <rect key="frame" x="468" y="8" width="124" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="124" id="wYs-B9-wxH"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWe-1R-6qD">
-                                            <rect key="frame" x="8" y="8" width="42" height="16"/>
+                                            <rect key="frame" x="8" y="8" width="304" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="304" id="cut-rP-bve"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="leadingMargin" secondItem="hWe-1R-6qD" secondAttribute="leading" id="1Qt-LE-j1W"/>
-                                        <constraint firstAttribute="topMargin" secondItem="hWe-1R-6qD" secondAttribute="top" id="AWt-q2-cXA"/>
-                                        <constraint firstAttribute="topMargin" secondItem="hF2-ar-MKO" secondAttribute="top" id="Cgy-pU-Kpa"/>
-                                        <constraint firstItem="hF2-ar-MKO" firstAttribute="centerY" secondItem="o7c-fg-gpH" secondAttribute="centerY" id="KOu-q9-U78"/>
-                                        <constraint firstItem="hWe-1R-6qD" firstAttribute="centerY" secondItem="o7c-fg-gpH" secondAttribute="centerY" id="MiK-f6-Y9x"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="hF2-ar-MKO" secondAttribute="trailing" id="ifa-s2-3Ya"/>
+                                        <constraint firstItem="hF2-ar-MKO" firstAttribute="top" secondItem="o7c-fg-gpH" secondAttribute="topMargin" id="B8v-CY-keA"/>
+                                        <constraint firstItem="hF2-ar-MKO" firstAttribute="baseline" secondItem="hWe-1R-6qD" secondAttribute="baseline" id="Xzr-mn-Oz2"/>
+                                        <constraint firstItem="hWe-1R-6qD" firstAttribute="leading" secondItem="o7c-fg-gpH" secondAttribute="leadingMargin" id="ceu-yW-yMm"/>
+                                        <constraint firstItem="hF2-ar-MKO" firstAttribute="firstBaseline" secondItem="hWe-1R-6qD" secondAttribute="firstBaseline" id="gJi-ar-zHG"/>
+                                        <constraint firstItem="hF2-ar-MKO" firstAttribute="trailing" secondItem="o7c-fg-gpH" secondAttribute="trailingMargin" id="rT7-oz-p6G"/>
+                                        <constraint firstItem="hF2-ar-MKO" firstAttribute="bottom" secondItem="o7c-fg-gpH" secondAttribute="bottomMargin" id="tHD-MY-PRp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -384,7 +391,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Hxs-Je-viW">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="kCN-i6-WFz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="kCN-i6-WFz">
                             <connections>
                                 <action selector="btn_Save:" destination="Gvb-XX-8C8" id="CgT-L6-JdS"/>
                             </connections>
@@ -909,9 +916,9 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="topMargin" secondItem="ybw-1X-UeL" secondAttribute="top" id="04P-V9-Ok3"/>
                                         <constraint firstItem="RcS-WF-CZL" firstAttribute="top" secondItem="gV9-NA-2LK" secondAttribute="topMargin" id="8Rq-br-sJ9"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="RcS-WF-CZL" secondAttribute="leading" id="E8B-IB-5Xa"/>
-                                        <constraint firstItem="ybw-1X-UeL" firstAttribute="centerY" secondItem="gV9-NA-2LK" secondAttribute="centerY" constant="-40" id="R9C-xP-UPw"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ybw-1X-UeL" secondAttribute="trailing" id="egS-Qg-s5U"/>
                                         <constraint firstItem="ybw-1X-UeL" firstAttribute="leading" relation="lessThanOrEqual" secondItem="RcS-WF-CZL" secondAttribute="trailing" constant="61" id="i3W-r4-hFI"/>
                                     </constraints>
@@ -928,7 +935,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ePe-wd-IOc">
-                        <barButtonItem key="rightBarButtonItem" title="Speichern" id="o3B-FA-8Ld">
+                        <barButtonItem key="rightBarButtonItem" title="Speichern" systemItem="save" id="o3B-FA-8Ld">
                             <connections>
                                 <action selector="btn_Save:" destination="EnY-kA-TN8" id="Uh0-AN-bRZ"/>
                             </connections>

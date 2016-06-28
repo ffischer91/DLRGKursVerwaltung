@@ -96,7 +96,14 @@ class TrainerDetailController: UITableViewController {
         }
     }
     
-
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // Höhe der Zellen anpassen
+        if (indexPath.section > 0) {
+            return 40.0
+        }else{
+            return tableView.rowHeight
+        }
+    }
 
 
 
@@ -134,8 +141,7 @@ class TrainerDetailController: UITableViewController {
     
     
     func editTrainer(){
-        print("editTrainer()")
-
+        
         getInfoOfCells()        // geht alle Zeilen durch und sammelt setzt die Infos in member!
         
         do {
