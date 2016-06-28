@@ -17,7 +17,7 @@
                BlueprintIdentifier = "5C1542591CFDE6030044F295"
                BuildableName = "MemberList.app"
                BlueprintName = "MemberList"
-               ReferencedContainer = "container:MemberList.xcodeproj">
+               ReferencedContainer = "container:DLRG.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "5C1542701CFDE6040044F295"
                BuildableName = "MemberListTests.xctest"
                BlueprintName = "MemberListTests"
-               ReferencedContainer = "container:MemberList.xcodeproj">
+               ReferencedContainer = "container:DLRG.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "5C15427B1CFDE6040044F295"
                BuildableName = "MemberListUITests.xctest"
                BlueprintName = "MemberListUITests"
-               ReferencedContainer = "container:MemberList.xcodeproj">
+               ReferencedContainer = "container:DLRG.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "5C1542591CFDE6030044F295"
             BuildableName = "MemberList.app"
             BlueprintName = "MemberList"
-            ReferencedContainer = "container:MemberList.xcodeproj">
+            ReferencedContainer = "container:DLRG.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "5C1542591CFDE6030044F295"
             BuildableName = "MemberList.app"
             BlueprintName = "MemberList"
-            ReferencedContainer = "container:MemberList.xcodeproj">
+            ReferencedContainer = "container:DLRG.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,7 +97,7 @@
             BlueprintIdentifier = "5C1542591CFDE6030044F295"
             BuildableName = "MemberList.app"
             BlueprintName = "MemberList"
-            ReferencedContainer = "container:MemberList.xcodeproj">
+            ReferencedContainer = "container:DLRG.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
