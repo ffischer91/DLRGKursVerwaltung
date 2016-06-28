@@ -11,6 +11,7 @@ import UIKit
 class EDMemberTableCell: UITableViewCell {
 
     var delegate: SwichChanged_Member?
+     var member: Member?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +23,7 @@ class EDMemberTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    var member: Member?
+   
     
     @IBOutlet weak var label_firstname: UILabel!
     @IBOutlet weak var label_surname: UILabel!
@@ -33,8 +34,11 @@ class EDMemberTableCell: UITableViewCell {
     
     
     @IBAction func switch_Member_Changed(sender: AnyObject) {
-        self.delegate?.switchChanged_Member(self)
+        self.delegate?.switchChanged_Member(self)       // delegate um Informationen in Core Data zu speichern
     }
+    
+    
+    //MARK: Data
     
     func setData(){
         switch_Member.on = false
@@ -48,6 +52,7 @@ class EDMemberTableCell: UITableViewCell {
         }
     }
 }
+
 
 protocol SwichChanged_Member {
     func switchChanged_Member(sender: EDMemberTableCell )

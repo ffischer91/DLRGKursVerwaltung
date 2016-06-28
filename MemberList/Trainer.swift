@@ -15,7 +15,7 @@ class Trainer: NSManagedObject {
 // Insert code here to add functionality to your managed object subclass
  
     
-    
+    // einzelnes Event_Date hinzufügen
     func addEvent_Date(newValue: Event_Date) {
         let set = self.hasEvent_Date                    //NSSet
         var arr = set!.allObjects as! [Event_Date]      // Array
@@ -23,6 +23,7 @@ class Trainer: NSManagedObject {
         self.hasEvent_Date = NSSet(array: arr)
     }
     
+    // einzelnes Event_Date entfernen
     func removeEvent_Date(value: Event_Date){
         let set = self.hasEvent_Date
         var arr = set!.allObjects as! [Event_Date]      // Array

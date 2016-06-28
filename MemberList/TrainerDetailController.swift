@@ -65,15 +65,9 @@ class TrainerDetailController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0){
-            return 1
+            return 1        // eine Celle für Details
         }else{
-//            let set = trainer!.hasEvent_Date                        //NSSet
-//            trainer_EventDates = set!.allObjects as! [Event_Date]      // Array
-//            //print(trainer_EventDates)
-//            eventDateCount = trainer!.hasEvent_Date!.count
-//            tableView.reloadData()
-            
-            return eventDateCount
+            return eventDateCount       // eine Zelle pro Event
         }
     }
     
@@ -82,28 +76,33 @@ class TrainerDetailController: UITableViewController {
             return "Eingetragene Termine"       // \(section)"
         }
         else{
-           return nil
+           return nil   // erste Section, kein Titel
         }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 {     // Trainer Details
             cellTrainerInfo = tableView.dequeueReusableCell(indexPath: indexPath) as TDTextfieldCell
             if(trainer != nil){
                 setInfoToCell()
             }
             return cellTrainerInfo!
         }
-        else{
+        else{       // section == 1, Trainer Events
             let cellevent = tableView.dequeueReusableCell(indexPath: indexPath) as TDEventTabCell
             cellevent.label_EventBeginn.text = trainer_EventDates[indexPath.row].beginn!.date_toString_DateTime()
             cellevent.label_EventName.text = trainer_EventDates[indexPath.row].hasEvent!.name
-            //cellevent.label_EventName.text = "dsfaewgfa"
             return cellevent
         }
     }
     
 
+
+
+
+  
+    // MARK: - Data
+    
     func setInfoToCell(){
         
         cellTrainerInfo!.firstnameTF.text = trainer?.firstname
@@ -111,11 +110,7 @@ class TrainerDetailController: UITableViewController {
         cellTrainerInfo!.licenseIDTF.text = trainer?.licenseID
         
     }
-
-
-  
-    // MARK: - Data
-
+    
     func getInfoOfCells(){
         trainer!.firstname = cellTrainerInfo!.firstnameTF.text
         trainer!.surname = cellTrainerInfo!.surnameTF.text
@@ -130,7 +125,7 @@ class TrainerDetailController: UITableViewController {
         
         do {
             try managedObjectContext.save()
-            print("createTrainer(), saved finished: \(trainer)")
+            //print("createTrainer(), saved finished: \(trainer)")
             
         } catch let error as NSError{
             print("Could not save \(error), \(error.userInfo)")

@@ -24,8 +24,6 @@ class TrainerTableViewCell: UITableViewCell, Reusable {
     @IBOutlet weak var firstname: UILabel!
     
     @IBOutlet weak var surname: UILabel!
-    
-    var test: String?
-    
+        
 
 }

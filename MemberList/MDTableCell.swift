@@ -10,7 +10,6 @@ import UIKit
 
 class MDTableCell: UITableViewCell, Reusable {
     
-    
     @IBOutlet weak var label_name: UILabel!
 
 }

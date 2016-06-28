@@ -37,24 +37,26 @@ class EDMemberPopupCell: UITableViewCell {
     @IBAction func switchChange_MemberPopup(sender: UISwitch) {
         
         if(switch_MemberPopup.on){
-            member!.addEvent(event!)
+            member!.addEvent(event!)    //Event zu Member hinzufügen
             updateDB()
         }else {
-            if(member?.hasEvents!.count>0){
-                if(member!.hasEvents!.containsObject(event!)){
-                    member!.removeEvent(event!)
-                    updateDB()
+            if(member?.hasEvents!.count>0){                         // gibt es Event-Elemente?
+                if(member!.hasEvents!.containsObject(event!)){      // ist dieses Element enthalten?
+                    member!.removeEvent(event!)                     //Event von Member entfernen
+                    updateDB()                                      // speichern
                 }
             }
         }
     }
   
+   
+//MARK: Data
     
-    func setData(){
+    func setData(){                         // Informationen zur Anzeige
         if(member != nil){
             //switch default aus!
             switch_MemberPopup.on = false
-            //labels füllen
+            //Labels füllen
             label_firstname.text = member!.firstname
             label_surename.text = member!.surname
             //Bild setzen

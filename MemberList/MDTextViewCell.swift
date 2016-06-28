@@ -13,6 +13,5 @@ class MDTextViewCell: UITableViewCell, Reusable {
     
     @IBOutlet weak var label: UILabel!
     
-    
     @IBOutlet weak var textView: UITextView!
 }

@@ -11,6 +11,7 @@ import UIKit
 class EDTrainerTableCell: UITableViewCell {
 
     var cellDelegate: CellSwichChangedProtocol?
+    var trainer: Trainer?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,16 +23,17 @@ class EDTrainerTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    var trainer: Trainer?
+    
     
     @IBOutlet weak var label_name: UILabel!
     @IBOutlet weak var switch_present: UISwitch!
     
     
     @IBAction func switchTrainer_Changed(sender: UISwitch) {
-        self.cellDelegate?.switchChanged(self)
+        self.cellDelegate?.switchChanged(self)  // delegate um Informationen in Core Data zu speichern
     }
 }
+
 
 protocol CellSwichChangedProtocol {
     func switchChanged(sender: EDTrainerTableCell )

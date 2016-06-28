@@ -68,10 +68,6 @@ class ImportViewController: UIViewController {
     func importData()->Bool{
         
         do {
-            let csv = try CSV(url: url!, delimiter: ";", encoding: NSWindowsCP1254StringEncoding, loadColumns: true)
-            
-            print (csv.header)  // 1. Zeile
-            //let event = Event(name: array[1], location: "", insertIntoManagedObjectContext: managedObjectContext)
             
             var bool_event: Bool = false
             var marker_event_date = 0
@@ -79,10 +75,12 @@ class ImportViewController: UIViewController {
             var marker_member  = 0
             var bool_member = false
             var i = 0
-        
+            let csv = try CSV(url: url!, delimiter: ";", encoding: NSWindowsCP1254StringEncoding, loadColumns: true)
+            var event: Event?
             
+            //print (csv.header)  // 1. Zeile
             
-            // sehr einfache Überprüfung des Files
+            // einfache Überprüfung des Files
             let header = csv.header
             if(header[ 0 ] == "Veranstaltung" && header[ 1 ] == "Name" && header[ 2 ] == "Ort"){
                 bool_event = true
@@ -91,30 +89,33 @@ class ImportViewController: UIViewController {
                 self.textView.text = "kein Import möglich: \n\n CSV-Datei ist nicht kompatibel"
                 return false
             }
-            var event: Event?
             
             
             csv.enumerateAsArray { data in
                 
-                if(data[0] == "Veranstaltungstermine"){
+                if(data[0] == "Veranstaltungstermine"){     // 1.Spalte
                     marker_event_date = i + 1
                     bool_event_date = true
                     
-                }else if(data[0] == "Teilnehmer"){
+                }else if(data[0] == "Teilnehmer"){          // 1.Spalte
                     marker_member = i + 1
                     bool_event_date = false
                     bool_member = true
                 }
-                if(bool_event){
+                
+                if(bool_event)   // es folgt ein Event
+                {
                     event = Event(name: data[1], location: data[2], insertIntoManagedObjectContext: self.managedObjectContext)
                     bool_event = false
                     self.elementCounter += 1
-                }else if(i >= marker_event_date && bool_event_date){
+                }
+                else if(i >= marker_event_date && bool_event_date)       // es folgt ein Event_Date
+                {
                     _ = Event_Date(event: event!, beginDate: data[1] , beginTime: data[2], endTime: data[3], insertIntoManagedObjectContext: self.managedObjectContext)
                     self.elementCounter += 1
-
-                    
-                }else if(i >= marker_member && bool_member){
+                }
+                else if(i >= marker_member && bool_member)           // es folgt ein Member
+                {
                     let member = Member(firstname: data[2], surname: data[1], birth: data[3], street: data[4], plz: data[5], city: data[6], insertIntoManagedObjectContext: self.managedObjectContext)
                     member.addEvent(event!)
                     self.elementCounter += 1
@@ -138,7 +139,7 @@ class ImportViewController: UIViewController {
     func updateData(){
         do {
             try managedObjectContext.save()
-            print(" Import..., saved finished ")       //\(event)")
+            //print(" Import..., saved finished ")
             self.textView.text.appendContentsOf("\n Import erfolgreich: \n\n insgesamt \(self.elementCounter) Elemente importiert!")
             
         } catch let error as NSError{

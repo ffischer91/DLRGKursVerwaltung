@@ -41,17 +41,20 @@ class EventTableController: UITableViewController, NSFetchedResultsControllerDel
             }
         }
     
-    override func viewWillAppear(animated: Bool) {
-        self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
-        super.viewWillAppear(animated)
-    }
+    
+        override func viewWillAppear(animated: Bool) {
+            self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+            super.viewWillAppear(animated)
+        }
     
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
             // Dispose of any resources that can be recreated.
         }
+    
         
     // MARK: - Table view
+    
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
             
             if segue.identifier == Constants.ShowNewEvent{
@@ -77,12 +80,10 @@ class EventTableController: UITableViewController, NSFetchedResultsControllerDel
             fetchedResultController = NSFetchedResultsController(fetchRequest: eventFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: "name" , cacheName: nil)
             return fetchedResultController
         }
-        
+    
+    
+        // FetchRequest
         func eventFetchRequest() -> NSFetchRequest {
-            //        let primarySortDescriptor = NSSortDescriptor(key: "classification.order", ascending: true)
-            //        let secondarySortDescriptor = NSSortDescriptor(key: "commonName", ascending: true)
-            //        animalsFetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
-            
             
             let fetchRequest = NSFetchRequest(entityName: Constants.EntityEvent)
             let primarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)

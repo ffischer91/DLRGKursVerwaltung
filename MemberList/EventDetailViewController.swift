@@ -275,7 +275,8 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Date
+        // da sich in der Ansicht 3 Tabellen befinden die durch die Views ausgeblendet werden muss hier unterschieden werden!
+        // Date View
         if(tableView == self.tableView){
             let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellEDDate)
            // eventDates = event!.eventHasDates!.allObjects as! [Event_Date]
@@ -285,12 +286,12 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             let beginString = dateFormatter.stringFromDate(eventDate.beginn!)
             let endString = dateFormatter.stringFromDate(eventDate.end!)
         
-            setDataToView() //Stepper muss aktualisiert werden
+            setDataToView()         //Stepper muss aktualisiert werden
 
             cell!.textLabel!.text = beginString + "  -  " + endString
             return cell!
         }
-        // Trainer
+        // Trainer View
         else if(tableView == self.trainerTableView){
             // Alle Trainer laden!
             trainer = fetchedRSC_Trainer.objectAtIndexPath(indexPath) as? Trainer
@@ -307,7 +308,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             cell.cellDelegate = self
             return cell
         }
-        // Member
+        // Member View
         else if(tableView == self.memberTableView){
             // nur Member laden die in Event bereits sind
             let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellEDMember) as! EDMemberTableCell
@@ -331,12 +332,12 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if(tableView == self.tableView){
-            print("Event Count: \(eventDates.count)")
+            //print("Event Count: \(eventDates.count)")
             selectedEvent_Date = eventDates[indexPath.row]
-            print(selectedEvent_Date)
+            //print(selectedEvent_Date)
             event!.removeEvent_Date(selectedEvent_Date!)
             tableView.reloadData()
-            setDataToView() //Stepper muss aktualisiert werden
+            setDataToView()         //Stepper muss aktualisiert werden
         }
     }
 
@@ -357,15 +358,17 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     func switchChanged(sender: EDTrainerTableCell){
         trainer = sender.trainer
         
-        if (sender.switch_present.on){  //JA
-            trainer!.addEvent_Date(eventDatePicker!)
-            updateEvent()
-        }else{  //NEIN
-            trainer!.removeEvent_Date(eventDatePicker!)
-            updateEvent()
+        if (sender.switch_present.on){                      //JA, Switch on
+            trainer!.addEvent_Date(eventDatePicker!)        // füge Datum hinzu
+            //updateEvent()
+        }else{                                              //Switch of
+            trainer!.removeEvent_Date(eventDatePicker!)     // entferne Datum
+            //updateEvent()                                   //speichern
         }
+        updateEvent()   // speichern
     }
     
+    // FetchRequest für alle Trainer
     func trainerFetchRequest() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: Constants.EntityTrainer)
         let primarySortDescriptor = NSSortDescriptor(key: "surname", ascending: true)
@@ -374,15 +377,20 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         return fetchRequest
     }
     
+
     func getFetchedRSC_Trainer() -> NSFetchedResultsController {
         fetchedRSC_Trainer = NSFetchedResultsController(fetchRequest: trainerFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedRSC_Trainer
     }
-    //MARK: Member Table
+    
+    
+    
+//MARK: Member Table
     
     @IBOutlet weak var memberTableView: UITableView!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Popup zum auswählen der Members für eine Veranstaltung
         if segue.identifier == Constants.ShowEDMemberPopover{
             let popVC = segue.destinationViewController as! EDMemberPopoverController
             popVC.event = event!        // Event übergeben!
@@ -398,26 +406,29 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         memberTableView.reloadData()
     }
+
     
-    func switchChanged_Member(sender: EDMemberTableCell ){
+    func switchChanged_Member(sender: EDMemberTableCell ){  // wird von Celle aus aufgerufen
         member = sender.member
         
         if (sender.switch_Member.on){  //JA
-            member!.addEvent_Date(eventDatePickerMember!)
-            updateEvent()
-        }else{  //NEIN
-            member!.removeEvent_Date(eventDatePickerMember!)
-            updateEvent()
+            member!.addEvent_Date(eventDatePickerMember!)       // Datum zu Member hinzufügen
+            updateEvent()                                       // speichern
+        }else{                  //NEIN
+            member!.removeEvent_Date(eventDatePickerMember!)       // Datum entfernen
+            updateEvent()                                           // speichern
         }
     }
     
-    //MARK: Bar Chart
+    
+//MARK: Bar Chart
     
     @IBOutlet weak var barChartView: BarChartView!
     
 
+    // erzeugt ein Bar Chart
     func setChart(dataPoints: [String], values: [Double]) {
-        barChartView.noDataText = "You need to provide data for the chart."
+        barChartView.noDataText = Constants.NoDataForChart      //"You need to provide data for the chart."
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
@@ -432,12 +443,13 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         chartDataSet1.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
     }
     
+    // erzeugt ein gruppiertes Bar Chart
     func setChartBarGroupDataSet(dataPoints: [String], values: [Double], values2: [Double]) {
         
         var dataEntries: [BarChartDataEntry] = []
         var dataEntries2: [BarChartDataEntry] = []
         
-        
+        // Data Entries erzeugen
         for i in 0..<dataPoints.count {
             
             var dataEntry = BarChartDataEntry(value: values2[i], xIndex: i)
@@ -447,46 +459,48 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
             dataEntries.append(dataEntry)
         }
         
+        // Legende
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: Constants.Ausbilder)
         let chartDataSet2 = BarChartDataSet(yVals: dataEntries2, label: Constants.Teilnehmer)
-        
+        // Farben setzen
         chartDataSet2.colors =  [UIColor(red: 255/255, green: 70/255, blue: 108/255, alpha: 1)]
         chartDataSet.colors =  [UIColor(red: 49/255, green: 27/255, blue: 146/255, alpha: 1)]
         
-        
+        // Daten seten
         let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet2]
         let data = BarChartData(xVals: dataPoints, dataSets: dataSets)
         barChartView.data = data
         
         barChartView.descriptionText = ""   // keine Beschreibung, wird mitten im Diagramm angezeigt
-
+        barChartView.noDataText = Constants.NoDataForChart
+        
+        // einige optische Sachen:
         barChartView.rightAxis.drawGridLinesEnabled = false
         barChartView.rightAxis.drawAxisLineEnabled = false
         barChartView.rightAxis.drawLabelsEnabled = false
         
-        
-        //barChartView.legend.enabled = true//false
-        
         barChartView.leftAxis.drawGridLinesEnabled = false
-        barChartView.leftAxis.drawAxisLineEnabled = false//true
+        barChartView.leftAxis.drawAxisLineEnabled = false   //true
         
         
-        barChartView.xAxis.drawGridLinesEnabled = true//false
+        barChartView.xAxis.drawGridLinesEnabled = true  //false
         barChartView.xAxis.drawLabelsEnabled = true
-        barChartView.xAxis.setLabelsToSkip(0)
-
-        barChartView.animate(xAxisDuration:1.0, yAxisDuration: 1.0, easingOption: .EaseInBounce)
+        barChartView.xAxis.setLabelsToSkip(0)   // jedes Label auf der x Achse soll angezeigt werden
+        
+        // Animation
+        barChartView.animate(xAxisDuration:1.5, yAxisDuration: 1.5, easingOption: .EaseInBounce)
    
     }
     
-    
+    // das Chart neu zeichnen
     func refreshChart(){
         let chart_dates = event!.hasEventDatesForChart()
         setChartBarGroupDataSet(chart_dates, values: event!.sumTrainerArray , values2: event!.sumMemberArray)
         self.barChartView.setNeedsDisplay()
     }
     
-    //MARK: Update Data
+    
+//MARK: Update Data
     
     func updateEvent(){
         if event == nil{
@@ -504,7 +518,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         }
     }
 
-
+    
     func getDataFromView(){
         event?.name = tF_name.text
         event?.location = tf_location.text

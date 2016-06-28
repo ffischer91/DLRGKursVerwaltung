@@ -31,7 +31,7 @@ class EDMemberPopoverController: UITableViewController, NSFetchedResultsControll
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Wählen Sie ihre Teilnehmer"
+        title = Constants.WähleTeilnehmer                           //"Wählen Sie ihre Teilnehmer"
         
         fetchedResultController = getFetchedResultController()
         fetchedResultController.delegate = self
@@ -41,9 +41,6 @@ class EDMemberPopoverController: UITableViewController, NSFetchedResultsControll
         } catch let error as NSError {
             print("Could not fetch Member \(error), \(error.userInfo)")
         }
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,7 +97,7 @@ class EDMemberPopoverController: UITableViewController, NSFetchedResultsControll
     }
     
     func dismissCompactPopoverPresentationController(){
-        print("hallo")
+        //print("dismiss Compact Popover Presentation Controller")
     }
 
 }

@@ -32,12 +32,6 @@ public struct Constants {
     static let ShowNewEvent = "Show New Event"
     static let ShowEventHeader = "Show Event Header"
     
-//    static let Cell_Allgemein = 0
-//    static let ShowDetailEventAllgemein = "Show Detail Event Allgemein"
-//    static let Cell_Termine = 1
-//    static let ShowDetailEventTermin = "Show Detail Event Termin"
-//    static let Cell_Teilnehmer = 2
-//    static let Cell_Helfer = 3
     
     static let ShowEDMemberPopover = "Show Member Popover"
 
@@ -55,5 +49,12 @@ public struct Constants {
     
     static let Ausbilder = "Ausbilder"
     static let Teilnehmer = "Teilnehmer"
+    static let WähleTeilnehmer = "Wählen Sie ihre Teilnehmer"
+    static let HeaderSecEventsMember = "Eingetragene Veranstaltungen"
+    static let Default = "Default"
+    static let NoDataForChart =  "keine Daten für das Diagramm"
+    
+    static let MAX_CELLS_MEMBER = 8
+    
 }
 

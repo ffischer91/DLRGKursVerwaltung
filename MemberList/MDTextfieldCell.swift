@@ -25,7 +25,6 @@ class MDTextfieldCell: UITableViewCell, Reusable {
     
     @IBOutlet weak var textField: UITextField!
     
-    //static var reuseIdentifier: String { return "VeryCustomReuseIdentifier" }
 }
 
 

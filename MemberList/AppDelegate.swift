@@ -19,12 +19,8 @@ struct CSVURL{
 class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControllerDelegate{
 
     var window: UIWindow?
-    //var managedObjectContext : NSManagedObjectContext?
-    //managedObjectContext = self//
     
-    //managedObjectContext = AppDelegate.
-    //(UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    
+    // Notification für CSV Import
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         let center = NSNotificationCenter.defaultCenter()
         let notification = NSNotification(name: CSVURL.Notification , object: self, userInfo: [CSVURL.Key:url])

@@ -12,8 +12,6 @@ import CoreData
 class MemberTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     
-    //public var context: NSManagedObjectContext!
-    
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
@@ -36,9 +34,9 @@ class MemberTableViewController: UITableViewController, NSFetchedResultsControll
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Teilnehmer"
-        //tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        title = Constants.Teilnehmer                //"Teilnehmer"
         
+        // fetch Data:
         fetchedResultController = getFetchedResultController()
         fetchedResultController.delegate = self
         do{
@@ -59,6 +57,7 @@ class MemberTableViewController: UITableViewController, NSFetchedResultsControll
         // Dispose of any resources that can be recreated.
     }
 
+    
     // MARK: - Table view data source
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -120,7 +119,7 @@ class MemberTableViewController: UITableViewController, NSFetchedResultsControll
             cell.memberImageView.contentMode = .ScaleAspectFit
         }
         else{
-            print("kein Bild")
+            // print("kein Bild")
         }
 
         return cell
@@ -133,7 +132,8 @@ class MemberTableViewController: UITableViewController, NSFetchedResultsControll
         do{
             try managedObjectContext.save()
         } catch let error as NSError {
-            print("Could not save Members \(error), \(error.userInfo)")
+            //print("Could not save Members \(error), \(error.userInfo)")
+            NSLog("Unresolved error when save Member\(error), \(error.userInfo)")
         }
 
     }
@@ -141,11 +141,7 @@ class MemberTableViewController: UITableViewController, NSFetchedResultsControll
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
     }
-    
-    
-    
-    
-    
+ 
 }
 
 

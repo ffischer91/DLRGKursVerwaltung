@@ -9,24 +9,12 @@
 import Foundation
 import CoreData
 
-//@NSManaged var city: String?
-//@NSManaged var dlrg: NSNumber?
-//@NSManaged var firstname: String?
-//@NSManaged var image: NSData?
-//@NSManaged var note: String?
-//@NSManaged var plz: String?
-//@NSManaged var street: String?
-//@NSManaged var surname: String?
-//@NSManaged var birth: NSDate?
-//@NSManaged var hasEvent_Date: NSSet?
-//@NSManaged var hasEvents: NSSet?
 
 class Member: NSManagedObject{
 
-// Insert code here to add functionality to your managed object subclass
 
-
-   override var description: String {
+    // Description anpassen, für Debug Zwecke nützlich!
+    override var description: String {
         return "[Member, First: \(self.firstname!), Surname: \(self.surname!) ]"
     }
     
@@ -50,25 +38,27 @@ class Member: NSManagedObject{
     }
     
     func addEvent(newValue: Event) {
-        let set = self.hasEvents                    //NSSet
-        var arr = set!.allObjects as! [Event]      // Array
+        let set = self.hasEvents
+        var arr = set!.allObjects as! [Event]
         arr.append(newValue)
         self.hasEvents = NSSet(array: arr)
     }
     
     func removeEvent(value: Event){
         let set = self.hasEvents
-        var arr = set!.allObjects as! [Event]      // Array
+        var arr = set!.allObjects as! [Event]
         arr.removeAtIndex(arr.indexOf(value)!)
         self.hasEvents = NSSet(array: arr)
     }
     
+    // Events als Array, sortiert nach name
     func hasEventsAsArray()-> [Event]{
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true,selector: #selector(NSString.localizedStandardCompare))
         let sortedByName = self.hasEvents!.sortedArrayUsingDescriptors([sortDescriptor]) as! [Event]
         return sortedByName
     }
     
+    // Funktion zu prüfen ob ein Member ein bestimmtes Event_Date eingetragen hat
     func containsEvent_Date(value: Event_Date)->Bool{
         if (self.hasEvent_Date != nil){
             return self.hasEvent_Date!.containsObject(value)
@@ -79,7 +69,7 @@ class Member: NSManagedObject{
     
     func removeEvent_Date(value: Event_Date){
         if(containsEvent_Date(value)){
-            let set = self.hasEvent_Date
+            let set = self.hasEvent_Date                    // NSSet
             var arr = set!.allObjects as! [Event_Date]      // Array
             arr.removeAtIndex(arr.indexOf(value)!)
             self.hasEvent_Date = NSSet(array: arr)

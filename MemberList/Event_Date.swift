@@ -12,6 +12,7 @@ import CoreData
 
 class Event_Date: NSManagedObject {
 
+    // Konstruktor
     convenience init(event: Event, begin: NSDate, end: NSDate, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         
         let entity = NSEntityDescription.entityForName("Event_Date", inManagedObjectContext: context)!
@@ -21,6 +22,7 @@ class Event_Date: NSManagedObject {
         self.end = end
     }
     
+    // Konstruktor
     convenience init(event: Event, beginDate: String, beginTime: String, endTime: String, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         
         let entity = NSEntityDescription.entityForName("Event_Date", inManagedObjectContext: context)!
@@ -33,9 +35,9 @@ class Event_Date: NSManagedObject {
         self.end = string_toDate(strEnd)
         
         self.hasEvent = event
-        
     }
     
+    // String zu Date umwandeln
     func string_toDate(dateTime: String)-> NSDate{
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
@@ -43,6 +45,10 @@ class Event_Date: NSManagedObject {
     }
 }
 
+
+
+// NSDate erweitern um  - Date in String umzuwandeln
+//                      - auf einzelne Elemente (hour, minute) zuzugreifen
 extension NSDate{
     
     func date_toString_DateTime() -> String{
