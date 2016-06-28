@@ -41,7 +41,7 @@ public struct Constants {
     
     static let CellMDLableText = [ "Vorname", "Nachname", "Straße", "PLZ", "Ort", "Foto", "Mitglied", "Notiz", "Kurse"]
     
-    static let CellTrainerInfo = "Trainer Table Cell"
+    static let CellTrainerInfo = "Trainer Table Cell"      
     static let ShowNewTrainerSegue = "Show New Trainer"
     static let ShowDetailTrainerSegue = "Show Detail Trainer"
     static let CellTrainerDetailTextField = "TDTextfieldCell"
@@ -52,8 +52,12 @@ public struct Constants {
     static let WähleTeilnehmer = "Wählen Sie ihre Teilnehmer"
     static let HeaderSecEventsMember = "Eingetragene Veranstaltungen"
     static let Default = "Default"
-    static let NoDataForChart =  "keine Daten für das Diagramm"
+    static let NoDataForChart =  "keine Daten für das Diagramm vorhanden"
     static let NOEventDates = "keine Termine zu dieser Veranstaltung"
+    static let TrainerHeaderTermine = "Eingetragene Termine"
+    static let EventHeaderTermine = "Termine"
+    static let EventHeaderMember = "Eingebuchte Teilnehmer"
+    static let EventHeaderTrainer = "Alle Ausbilder"
     
     static let MAX_CELLS_MEMBER = 8
     

@@ -28,7 +28,7 @@ class TrainerTableViewController: UITableViewController, NSFetchedResultsControl
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        title = "Ausblider"
+        title = "Ausbilder"
         
         fetchedResultController = getFetchedResultController()
         fetchedResultController.delegate = self
@@ -87,10 +87,11 @@ class TrainerTableViewController: UITableViewController, NSFetchedResultsControl
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellTrainerInfo, forIndexPath: indexPath) as! TrainerTableViewCell
+       // let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellTrainerInfo, forIndexPath: indexPath) as! TrainerTableViewCell
+        let cell = tableView.dequeueReusableCell(indexPath: indexPath) as TrainerTableViewCell
         let trainer = fetchedResultController.objectAtIndexPath(indexPath) as! Trainer
-        cell.firstname.text = trainer.firstname
-        cell.surname.text = trainer.surname
+        cell.label_firstname.text = trainer.firstname
+        cell.label_surname.text = trainer.surname   
         return cell
     }
     

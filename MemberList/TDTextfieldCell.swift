@@ -24,5 +24,6 @@ class TDTextfieldCell: UITableViewCell, Reusable{
     @IBOutlet weak var firstnameTF: UITextField!
 
     @IBOutlet weak var licenseIDTF: UITextField!
+    
     @IBOutlet weak var surnameTF: UITextField!
 }

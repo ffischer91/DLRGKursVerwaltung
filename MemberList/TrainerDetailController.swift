@@ -73,7 +73,7 @@ class TrainerDetailController: UITableViewController {
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 1){
-            return "Eingetragene Termine"       // \(section)"
+            return Constants.TrainerHeaderTermine //"Eingetragene Termine"       // \(section)"
         }
         else{
            return nil   // erste Section, kein Titel

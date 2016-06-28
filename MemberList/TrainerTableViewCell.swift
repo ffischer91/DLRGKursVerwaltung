@@ -21,9 +21,9 @@ class TrainerTableViewCell: UITableViewCell, Reusable {
         // Configure the view for the selected state
     }
     
-    @IBOutlet weak var firstname: UILabel!
+// Labels zum setzen
+    @IBOutlet weak var label_surname: UILabel!
+    @IBOutlet weak var label_firstname: UILabel!
     
-    @IBOutlet weak var surname: UILabel!
-        
 
 }

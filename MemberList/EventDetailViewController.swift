@@ -39,6 +39,9 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         dP_begin.date = NSDate() //current date
         dP_end.date = NSDate()  //current date
         
+        //BarChartView
+        barChartView.noDataText = Constants.NoDataForChart
+        
         // Trainer fetch all
         fetchedRSC_Trainer = getFetchedRSC_Trainer()
         fetchedRSC_Trainer.delegate = self
@@ -244,7 +247,6 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         // Date View
         if(tableView == self.tableView){
             let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellEDDate)
-           // eventDates = event!.eventHasDates!.allObjects as! [Event_Date]
             eventDates = event!.hasEventDatesAsArray()
             let eventDate = eventDates[indexPath.row]
         
@@ -294,6 +296,18 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         }
     }
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if(tableView == self.tableView){
+            return Constants.EventHeaderTermine
+        }else if(tableView == self.memberTableView){
+            return Constants.EventHeaderMember
+        }else if(tableView == self.trainerTableView){
+            return Constants.EventHeaderTrainer
+        }
+        else{
+            return nil
+        }
+    }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if(tableView == self.tableView){
@@ -321,13 +335,14 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
     
     func switchChanged(sender: EDTrainerTableCell){
         trainer = sender.trainer
-        
-        if (sender.switch_present.on){                      //JA, Switch on
-            trainer!.addEvent_Date(eventDatePicker!)        // füge Datum hinzu
-        }else{                                              //Switch of
-            trainer!.removeEvent_Date(eventDatePicker!)     // entferne Datum
+        if(eventDatePicker != nil){
+            if (sender.switch_present.on){                      //JA, Switch on
+                trainer!.addEvent_Date(eventDatePicker!)        // füge Datum hinzu
+            }else{                                              //Switch of
+                trainer!.removeEvent_Date(eventDatePicker!)     // entferne Datum
+            }
+            updateEvent()   // speichern
         }
-        updateEvent()   // speichern
     }
     
     // FetchRequest für alle Trainer
@@ -493,6 +508,7 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         tf_location.text = event!.location
         
         eventDates = event!.hasEventDatesAsArray()
+        
         //Stepper Tab Ausbilder
         stepper_Ausbilder.minimumValue = 0.0
         stepper_Ausbilder.maximumValue = Double(eventDates.count - 1)
@@ -502,7 +518,6 @@ class EventDetailViewController: UIViewController, UITextFieldDelegate, UITableV
         stepper_Teilnehmer.minimumValue = 0.0
         stepper_Teilnehmer.maximumValue = Double(eventDates.count - 1)
         stepper_Teilnehmer.stepValue = 1.0
-        
         
         if(eventDates.count > 0){
             // Tab Member
